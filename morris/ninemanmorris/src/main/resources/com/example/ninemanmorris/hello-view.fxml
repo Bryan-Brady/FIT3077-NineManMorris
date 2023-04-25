@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ninemanmorris.HelloController">
+   <children>
+      <Circle fx:id="circle" fill="DODGERBLUE" layoutX="182.0" layoutY="293.0" onMouseClicked="#onBallClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="node1" fill="#d3cbcb" layoutX="182.0" layoutY="79.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="node2" fill="#d3cbcb" layoutX="295.0" layoutY="79.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="node3" fill="#d3cbcb" layoutX="403.0" layoutY="79.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="node10" fill="#d3cbcb" layoutX="182.0" layoutY="184.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="node22" fill="#d3cbcb" layoutX="182.0" layoutY="293.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="node5" fill="#d3cbcb" layoutX="295.0" layoutY="113.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="node8" fill="#d3cbcb" layoutX="295.0" layoutY="146.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="node23" fill="#d3cbcb" layoutX="295.0" layoutY="293.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="node24" fill="#d3cbcb" layoutX="403.0" layoutY="293.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="node20" fill="#d3cbcb" layoutX="295.0" layoutY="259.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="node17" fill="#d3cbcb" layoutX="295.0" layoutY="219.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="node15" fill="#d3cbcb" layoutX="403.0" layoutY="184.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="node4" fill="#d3cbcb" layoutX="222.0" layoutY="113.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="node6" fill="#d3cbcb" layoutX="367.0" layoutY="113.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="node19" fill="#d3cbcb" layoutX="222.0" layoutY="259.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="node21" fill="#d3cbcb" layoutX="367.0" layoutY="259.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="node11" fill="#d3cbcb" layoutX="222.0" layoutY="184.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="node14" fill="#d3cbcb" layoutX="367.0" layoutY="184.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="node13" fill="#d3cbcb" layoutX="330.0" layoutY="184.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="node12" fill="#d3cbcb" layoutX="261.0" layoutY="184.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="node7" fill="#d3cbcb" layoutX="261.0" layoutY="146.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="node9" fill="#d3cbcb" layoutX="330.0" layoutY="146.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="node18" fill="#d3cbcb" layoutX="330.0" layoutY="219.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="node16" fill="#d3cbcb" layoutX="261.0" layoutY="219.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+   </children>
+</AnchorPane>
