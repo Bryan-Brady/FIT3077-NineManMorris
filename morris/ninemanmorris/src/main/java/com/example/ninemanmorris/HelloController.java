@@ -8,11 +8,11 @@ import java.util.Random;
 
 public class HelloController {
 
-    private int status;
+    private static Circle currentChip = null;
 
 
     @FXML
-    private Circle circle;
+    private Circle piece1;
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
     @FXML
@@ -96,23 +96,75 @@ public class HelloController {
     @FXML
     public void initialize() {
         //somehow initialize a status variable so each ball can know which node has a ball
+
     }
 
     @FXML
     void onBallClick(MouseEvent event) {
         //temporary testing function
-        double x = rand.nextInt(-100, 300);
-        double y = rand.nextInt(0, 300);
-        circle.setCenterX(x);
-        circle.setCenterY(y);
+//        double x = rand.nextInt(-100, 300);
+//        double y = rand.nextInt(0, 300);
+//        circle.setLayoutX(node1.getLayoutX());
+//        circle.setLayoutY(node1.getLayoutY());
+//
+//
+//        System.out.println(circle.getLayoutX());
+//        System.out.println(circle.getLayoutY());
+//
+//        System.out.println("node 1 X:" + node1.getLayoutX());
+//        System.out.println("node 1 Y:" + node1.getLayoutY());
 
+        this.currentChip =  piece1;
+        System.out.println("Piece selected: " + piece1.getId());
+        System.out.println("Piece X: " + piece1.getLayoutX());
+        System.out.println("Piece Y: " + piece1.getLayoutY());
 
-        System.out.println(circle.getCenterX());
-        System.out.println(circle.getCenterY());
-
-        System.out.println(node6.getCenterX());
     }
 
 
+    @FXML
+    void onNode1Click(MouseEvent event) {
+        if (this.currentChip != null) {
+            setPos(this.currentChip, node1);
+        }
+    }
 
+    @FXML
+    void onNode2Click(MouseEvent event) {
+        if (this.currentChip != null) {
+            setPos(this.currentChip, node2 );
+        }
+    }
+
+    @FXML
+    void onNode3Click(MouseEvent event) {
+        if (this.currentChip != null) {
+            setPos(this.currentChip, node3);
+        }
+    }
+
+    @FXML
+    void onNode4Click(MouseEvent event) {
+        if (this.currentChip != null) {
+            setPos(this.currentChip, node4 );
+        }
+    }
+
+    @FXML
+    void onNode5Click(MouseEvent event) {
+        if (this.currentChip != null) {
+            setPos(this.currentChip, node5 );
+        }
+    }
+
+    public void setPos(Circle thisChip, Circle thisNode) {
+        thisChip.setLayoutX(thisNode.getLayoutX());
+        thisChip.setLayoutY(thisNode.getLayoutY());
+        this.currentChip = null;
+
+        System.out.println("This Piece: " + thisChip.getId());
+        System.out.println("Moved to: " + thisNode.getId());
+        System.out.println("Current Piece X: " + thisChip.getLayoutX());
+        System.out.println("Current Piece Y: " + thisChip.getLayoutY());
+    }
 }
