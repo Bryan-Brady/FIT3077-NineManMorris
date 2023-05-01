@@ -4,10 +4,11 @@ import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
+import com.example.ninemanmorris.Chip;
 
 import java.lang.reflect.Array;
 
-public class HelloController {
+public class Board {
 
     //Objects within this is instantiated immediately upon running HelloApplication.java
     @FXML
@@ -16,7 +17,7 @@ public class HelloController {
     private static Circle currentChip = null;
 
     ///////////////////////////////////////////////////
-    // Player 1 //
+    //Player 1 //
     @FXML
     private Circle p101;
 
@@ -44,7 +45,7 @@ public class HelloController {
     @FXML
     private Circle p109;
 
-    ////////////////////////////////////////////////////////
+
     // Player 2 //
     @FXML
     private Circle p201;
@@ -72,6 +73,7 @@ public class HelloController {
 
     @FXML
     private Circle p209;
+
     ////////////////////////////////////////////////////////
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
     @FXML
@@ -157,14 +159,12 @@ public class HelloController {
         //somehow initialize a status variable so each ball can know which node has a ball
 
     }
-
     @FXML
-    void onLayoutClick(MouseEvent event) {
-
+    void onLayoutClick() {
+        //somehow initialize a status variable so each ball can know which node has a ball
     }
-
     @FXML
-    void onPieceClick(MouseEvent event) {
+    void onChipClick(MouseEvent event) {
         //temporary testing function
 //        double x = rand.nextInt(-100, 300);
 //        double y = rand.nextInt(0, 300);
@@ -178,18 +178,18 @@ public class HelloController {
 //        System.out.println("node 1 X:" + node1.getLayoutX());
 //        System.out.println("node 1 Y:" + node1.getLayoutY());
 
-        Circle thisPiece = ((Circle)event.getSource());
+        Circle thisChip = ((Circle)event.getSource());
 
-        this.currentChip = thisPiece;
+        this.currentChip = thisChip;
 
-        System.out.println("Piece selected: " + thisPiece.getId());
-        System.out.println("Piece X: " + thisPiece.getLayoutX());
-        System.out.println("Piece Y: " + thisPiece.getLayoutY());
+        System.out.println("Piece selected: " + thisChip.getId());
+        System.out.println("Piece X: " + thisChip.getLayoutX());
+        System.out.println("Piece Y: " + thisChip.getLayoutY());
 
         System.out.println(event.getSource());
         System.out.println(event.getTarget());
-        System.out.println(thisPiece);
-        System.out.println(thisPiece.getId());
+        System.out.println(thisChip);
+        System.out.println(thisChip.getId());
 
     }
 

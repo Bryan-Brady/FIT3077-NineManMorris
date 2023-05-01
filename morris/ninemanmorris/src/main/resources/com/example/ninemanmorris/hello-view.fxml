@@ -5,7 +5,9 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="layout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onLayoutClick" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ninemanmorris.HelloController">
+
+<AnchorPane fx:id="layout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onLayoutClick" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ninemanmorris.Board">
+>>>>>>> Stashed changes
    <children>
       <Circle fx:id="node1" fill="#d3cbcb" layoutX="182.0" layoutY="79.0" onMouseClicked="#onNodeClick" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
       <Circle fx:id="node2" fill="#d3cbcb" layoutX="295.0" layoutY="79.0" onMouseClicked="#onNodeClick" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
@@ -31,24 +33,7 @@
       <Circle fx:id="node9" fill="#d3cbcb" layoutX="330.0" layoutY="146.0" onMouseClicked="#onNodeClick" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
       <Circle fx:id="node18" fill="#d3cbcb" layoutX="330.0" layoutY="219.0" onMouseClicked="#onNodeClick" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
       <Circle fx:id="node16" fill="#d3cbcb" layoutX="261.0" layoutY="219.0" onMouseClicked="#onNodeClick" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fx:id="p101" fill="DODGERBLUE" layoutX="61.0" layoutY="60.0" onMouseClicked="#onPieceClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fx:id="p102" fill="DODGERBLUE" layoutX="61.0" layoutY="139.0" onMouseClicked="#onPieceClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fx:id="p103" fill="DODGERBLUE" layoutX="61.0" layoutY="184.0" onMouseClicked="#onPieceClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fx:id="p104" fill="DODGERBLUE" layoutX="61.0" layoutY="226.0" onMouseClicked="#onPieceClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fx:id="p105" fill="DODGERBLUE" layoutX="61.0" layoutY="266.0" onMouseClicked="#onPieceClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fx:id="p106" fill="DODGERBLUE" layoutX="61.0" layoutY="305.0" onMouseClicked="#onPieceClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fx:id="p107" fill="DODGERBLUE" layoutX="61.0" layoutY="346.0" onMouseClicked="#onPieceClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fx:id="p108" fill="DODGERBLUE" layoutX="61.0" layoutY="374.0" onMouseClicked="#onPieceClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fx:id="p109" fill="DODGERBLUE" layoutX="61.0" layoutY="98.0" onMouseClicked="#onPieceClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fx:id="p201" fill="#ff0202" layoutX="506.0" layoutY="60.0" onMouseClicked="#onPieceClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fx:id="p202" fill="#ff0202" layoutX="509.0" layoutY="139.0" onMouseClicked="#onPieceClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fx:id="p203" fill="#ff0202" layoutX="506.0" layoutY="188.0" onMouseClicked="#onPieceClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fx:id="p204" fill="#ff0202" layoutX="506.0" layoutY="226.0" onMouseClicked="#onPieceClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fx:id="p205" fill="#ff0202" layoutX="507.0" layoutY="263.0" onMouseClicked="#onPieceClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fx:id="p206" fill="#ff0202" layoutX="509.0" layoutY="305.0" onMouseClicked="#onPieceClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fx:id="p207" fill="#ff0202" layoutX="510.0" layoutY="344.0" onMouseClicked="#onPieceClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fx:id="p208" fill="#ff0202" layoutX="510.0" layoutY="374.0" onMouseClicked="#onPieceClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fx:id="p209" fill="#ff0202" layoutX="507.0" layoutY="98.0" onMouseClicked="#onPieceClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+     
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#90c9ff" height="32.0" layoutX="11.0" layoutY="11.0" stroke="BLACK" strokeType="INSIDE" width="99.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff9191" height="32.0" layoutX="466.0" layoutY="11.0" stroke="BLACK" strokeType="INSIDE" width="99.0" />
       <Text layoutX="52.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1" />
@@ -57,6 +42,26 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#90979e" height="32.0" layoutX="535.0" layoutY="10.0" stroke="BLACK" strokeType="INSIDE" width="31.0" />
       <Circle fill="#ff0202" layoutX="551.0" layoutY="26.0" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
       <Circle fill="DODGERBLUE" layoutX="26.0" layoutY="27.0" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+
+      <Circle fx:id="p101" fill="DODGERBLUE" layoutX="61.0" layoutY="60.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="p102" fill="DODGERBLUE" layoutX="61.0" layoutY="139.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="p103" fill="DODGERBLUE" layoutX="61.0" layoutY="184.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="p104" fill="DODGERBLUE" layoutX="61.0" layoutY="226.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="p105" fill="DODGERBLUE" layoutX="61.0" layoutY="266.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="p106" fill="DODGERBLUE" layoutX="61.0" layoutY="305.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="p107" fill="DODGERBLUE" layoutX="61.0" layoutY="346.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="p108" fill="DODGERBLUE" layoutX="61.0" layoutY="374.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="p109" fill="DODGERBLUE" layoutX="61.0" layoutY="98.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="p201" fill="#ff0202" layoutX="506.0" layoutY="60.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="p202" fill="#ff0202" layoutX="509.0" layoutY="139.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="p203" fill="#ff0202" layoutX="506.0" layoutY="188.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="p204" fill="#ff0202" layoutX="506.0" layoutY="226.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="p205" fill="#ff0202" layoutX="507.0" layoutY="263.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="p206" fill="#ff0202" layoutX="509.0" layoutY="305.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="p207" fill="#ff0202" layoutX="510.0" layoutY="344.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="p208" fill="#ff0202" layoutX="510.0" layoutY="374.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="p209" fill="#ff0202" layoutX="507.0" layoutY="98.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+>>>>>>> Stashed changes
 
 
 
