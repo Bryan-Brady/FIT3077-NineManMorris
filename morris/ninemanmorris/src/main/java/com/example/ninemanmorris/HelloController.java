@@ -2,17 +2,44 @@ package com.example.ninemanmorris;
 
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
 
-import java.util.Random;
-
 public class HelloController {
+
+    @FXML
+    private AnchorPane layout;
 
     private static Circle currentChip = null;
 
 
     @FXML
     private Circle piece1;
+
+    @FXML
+    private Circle piece2;
+
+    @FXML
+    private Circle piece3;
+
+    @FXML
+    private Circle piece4;
+
+    @FXML
+    private Circle piece5;
+
+    @FXML
+    private Circle piece6;
+
+    @FXML
+    private Circle piece7;
+
+    @FXML
+    private Circle piece8;
+
+    @FXML
+    private Circle piece9;
+
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
     @FXML
@@ -90,7 +117,7 @@ public class HelloController {
 
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
-    Random rand = new Random();
+//    Random rand = new Random();
 
 
     @FXML
@@ -121,6 +148,11 @@ public class HelloController {
 
     }
 
+    @FXML
+    void onLayoutClick(MouseEvent event) {
+
+
+    }
 
     @FXML
     void onNode1Click(MouseEvent event) {
