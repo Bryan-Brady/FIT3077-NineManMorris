@@ -5,42 +5,74 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
 
+import java.lang.reflect.Array;
+
 public class HelloController {
 
+    //Objects within this is instantiated immediately upon running HelloApplication.java
     @FXML
     private AnchorPane layout;
 
     private static Circle currentChip = null;
 
+    ///////////////////////////////////////////////////
+    // Player 1 //
+    @FXML
+    private Circle p101;
 
     @FXML
-    private Circle piece1;
+    private Circle p102;
 
     @FXML
-    private Circle piece2;
+    private Circle p103;
 
     @FXML
-    private Circle piece3;
+    private Circle p104;
 
     @FXML
-    private Circle piece4;
+    private Circle p105;
 
     @FXML
-    private Circle piece5;
+    private Circle p106;
 
     @FXML
-    private Circle piece6;
+    private Circle p107;
 
     @FXML
-    private Circle piece7;
+    private Circle p108;
 
     @FXML
-    private Circle piece8;
+    private Circle p109;
+
+    ////////////////////////////////////////////////////////
+    // Player 2 //
+    @FXML
+    private Circle p201;
 
     @FXML
-    private Circle piece9;
+    private Circle p202;
 
+    @FXML
+    private Circle p203;
 
+    @FXML
+    private Circle p204;
+
+    @FXML
+    private Circle p205;
+
+    @FXML
+    private Circle p206;
+
+    @FXML
+    private Circle p207;
+
+    @FXML
+    private Circle p208;
+
+    @FXML
+    private Circle p209;
+    ////////////////////////////////////////////////////////
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
     @FXML
     private Circle node1;
@@ -119,7 +151,7 @@ public class HelloController {
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 //    Random rand = new Random();
 
-
+    //Here are the functions for the Button, Ball (or piece) and Node
     @FXML
     public void initialize() {
         //somehow initialize a status variable so each ball can know which node has a ball
@@ -127,7 +159,12 @@ public class HelloController {
     }
 
     @FXML
-    void onBallClick(MouseEvent event) {
+    void onLayoutClick(MouseEvent event) {
+
+    }
+
+    @FXML
+    void onPieceClick(MouseEvent event) {
         //temporary testing function
 //        double x = rand.nextInt(-100, 300);
 //        double y = rand.nextInt(0, 300);
@@ -141,51 +178,26 @@ public class HelloController {
 //        System.out.println("node 1 X:" + node1.getLayoutX());
 //        System.out.println("node 1 Y:" + node1.getLayoutY());
 
-        this.currentChip =  piece1;
-        System.out.println("Piece selected: " + piece1.getId());
-        System.out.println("Piece X: " + piece1.getLayoutX());
-        System.out.println("Piece Y: " + piece1.getLayoutY());
+        Circle thisPiece = ((Circle)event.getSource());
+
+        this.currentChip = thisPiece;
+
+        System.out.println("Piece selected: " + thisPiece.getId());
+        System.out.println("Piece X: " + thisPiece.getLayoutX());
+        System.out.println("Piece Y: " + thisPiece.getLayoutY());
+
+        System.out.println(event.getSource());
+        System.out.println(event.getTarget());
+        System.out.println(thisPiece);
+        System.out.println(thisPiece.getId());
 
     }
 
     @FXML
-    void onLayoutClick(MouseEvent event) {
-
-
-    }
-
-    @FXML
-    void onNode1Click(MouseEvent event) {
+    void onNodeClick(MouseEvent event) {
+        Circle thisNode = ((Circle)event.getSource());
         if (this.currentChip != null) {
-            setPos(this.currentChip, node1);
-        }
-    }
-
-    @FXML
-    void onNode2Click(MouseEvent event) {
-        if (this.currentChip != null) {
-            setPos(this.currentChip, node2 );
-        }
-    }
-
-    @FXML
-    void onNode3Click(MouseEvent event) {
-        if (this.currentChip != null) {
-            setPos(this.currentChip, node3);
-        }
-    }
-
-    @FXML
-    void onNode4Click(MouseEvent event) {
-        if (this.currentChip != null) {
-            setPos(this.currentChip, node4 );
-        }
-    }
-
-    @FXML
-    void onNode5Click(MouseEvent event) {
-        if (this.currentChip != null) {
-            setPos(this.currentChip, node5 );
+            setPos(this.currentChip, thisNode);
         }
     }
 
