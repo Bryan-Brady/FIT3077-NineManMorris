@@ -3,8 +3,9 @@ package com.example.ninemanmorris;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.shape.Circle;
+import com.example.ninemanmorris.Node;
 import com.example.ninemanmorris.Chip;
+
 
 import java.lang.reflect.Array;
 
@@ -14,139 +15,139 @@ public class Board {
     @FXML
     private AnchorPane layout;
 
-    private static Circle currentChip = null;
+    private static Chip currentChip = null;
 
     ///////////////////////////////////////////////////
     //Player 1 //
     @FXML
-    private Circle p101;
+    private Chip p101;
 
     @FXML
-    private Circle p102;
+    private Chip p102;
 
     @FXML
-    private Circle p103;
+    private Chip p103;
 
     @FXML
-    private Circle p104;
+    private Chip p104;
 
     @FXML
-    private Circle p105;
+    private Chip p105;
 
     @FXML
-    private Circle p106;
+    private Chip p106;
 
     @FXML
-    private Circle p107;
+    private Chip p107;
 
     @FXML
-    private Circle p108;
+    private Chip p108;
 
     @FXML
-    private Circle p109;
+    private Chip p109;
 
 
     // Player 2 //
     @FXML
-    private Circle p201;
+    private Chip p201;
 
     @FXML
-    private Circle p202;
+    private Chip p202;
 
     @FXML
-    private Circle p203;
+    private Chip p203;
 
     @FXML
-    private Circle p204;
+    private Chip p204;
 
     @FXML
-    private Circle p205;
+    private Chip p205;
 
     @FXML
-    private Circle p206;
+    private Chip p206;
 
     @FXML
-    private Circle p207;
+    private Chip p207;
 
     @FXML
-    private Circle p208;
+    private Chip p208;
 
     @FXML
-    private Circle p209;
+    private Chip p209;
 
     ////////////////////////////////////////////////////////
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
     @FXML
-    private Circle node1;
+    private Node node1;
 
     @FXML
-    private Circle node2;
+    private Node node2;
 
     @FXML
-    private Circle node3;
+    private Node node3;
 
     @FXML
-    private Circle node4;
+    private Node node4;
 
     @FXML
-    private Circle node5;
+    private Node node5;
 
     @FXML
-    private Circle node6;
+    private Node node6;
 
     @FXML
-    private Circle node7;
+    private Node node7;
 
     @FXML
-    private Circle node8;
+    private Node node8;
 
     @FXML
-    private Circle node9;
+    private Node node9;
 
     @FXML
-    private Circle node10;
+    private Node node10;
 
     @FXML
-    private Circle node11;
+    private Node node11;
 
     @FXML
-    private Circle node12;
+    private Node node12;
 
     @FXML
-    private Circle node13;
+    private Node node13;
 
     @FXML
-    private Circle node14;
+    private Node node14;
 
     @FXML
-    private Circle node15;
+    private Node node15;
 
     @FXML
-    private Circle node16;
+    private Node node16;
 
     @FXML
-    private Circle node17;
+    private Node node17;
 
     @FXML
-    private Circle node18;
+    private Node node18;
 
     @FXML
-    private Circle node19;
+    private Node node19;
 
     @FXML
-    private Circle node20;
+    private Node node20;
 
     @FXML
-    private Circle node21;
+    private Node node21;
 
     @FXML
-    private Circle node22;
+    private Node node22;
 
     @FXML
-    private Circle node23;
+    private Node node23;
 
     @FXML
-    private Circle node24;
+    private Node node24;
 
 
 
@@ -178,7 +179,7 @@ public class Board {
 //        System.out.println("node 1 X:" + node1.getLayoutX());
 //        System.out.println("node 1 Y:" + node1.getLayoutY());
 
-        Circle thisChip = ((Circle)event.getSource());
+        Chip thisChip = ((Chip)event.getSource());
 
         this.currentChip = thisChip;
 
@@ -195,13 +196,13 @@ public class Board {
 
     @FXML
     void onNodeClick(MouseEvent event) {
-        Circle thisNode = ((Circle)event.getSource());
+        Node thisNode = ((Node)event.getSource());
         if (this.currentChip != null) {
             setPos(this.currentChip, thisNode);
         }
     }
 
-    public void setPos(Circle thisChip, Circle thisNode) {
+    public void setPos(Chip thisChip, Node thisNode) {
         thisChip.setLayoutX(thisNode.getLayoutX());
         thisChip.setLayoutY(thisNode.getLayoutY());
         this.currentChip = null;
