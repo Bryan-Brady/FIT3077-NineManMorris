@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Text?>
 <?import com.example.ninemanmorris.Node?>
@@ -61,9 +63,38 @@
       <Chip fx:id="p207" fill="#ff0202" layoutX="510.0" layoutY="344.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
       <Chip fx:id="p208" fill="#ff0202" layoutX="510.0" layoutY="374.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
       <Chip fx:id="p209" fill="#ff0202" layoutX="507.0" layoutY="98.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
-
-
-
-
+      <Line endX="-19.0" endY="50.0" layoutX="201.0" layoutY="127.0" startX="-19.0" startY="-39.0" />
+      <Line endX="22.0" endY="44.0" layoutX="266.0" layoutY="35.0" startX="-77.0" startY="44.0" />
+      <Line endX="39.0" endY="44.0" layoutX="357.0" layoutY="35.0" startX="-55.0" startY="44.0" />
+      <Line endX="-19.0" endY="26.0" layoutX="201.0" layoutY="260.0" startX="-19.0" startY="-69.0" />
+      <Line endX="22.0" endY="44.0" layoutX="266.0" layoutY="250.0" startX="-77.0" startY="44.0" />
+      <Line endX="39.0" endY="44.0" layoutX="357.0" layoutY="249.0" startX="-55.0" startY="44.0" />
+      <Line endX="-19.0" endY="64.0" layoutX="422.0" layoutY="113.0" startX="-19.0" startY="-27.0" />
+      <Line endX="-19.0" endY="69.0" layoutX="422.0" layoutY="217.0" startX="-19.0" startY="-27.0" />
+      <Line endX="5.0" endY="43.0" layoutX="355.0" layoutY="70.0" startX="-53.0" startY="43.0" />
+      <Line endX="7.0" endY="42.0" layoutX="281.0" layoutY="71.0" startX="-52.0" startY="42.0" />
+      <Line endX="7.0" endY="42.0" layoutX="281.0" layoutY="217.0" startX="-52.0" startY="42.0" />
+      <Line endX="5.0" endY="43.0" layoutX="355.0" layoutY="216.0" startX="-53.0" startY="43.0" />
+      <Line endX="-19.0" endY="51.0" layoutX="241.0" layoutY="126.0" startX="-19.0" startY="-6.0" />
+      <Line endX="-19.0" endY="55.0" layoutX="241.0" layoutY="197.0" startX="-19.0" startY="-6.0" />
+      <Line endX="-19.0" endY="49.0" layoutX="386.0" layoutY="203.0" startX="-19.0" startY="-12.0" />
+      <Line endX="-19.0" endY="54.0" layoutX="386.0" layoutY="123.0" startX="-19.0" startY="-3.0" />
+      <Line endX="-11.0" endY="43.0" layoutX="226.0" layoutY="141.0" startX="-37.0" startY="43.0" />
+      <Line endX="-14.0" endY="42.0" layoutX="268.0" layoutY="142.0" startX="-39.0" startY="42.0" />
+      <Line endX="-18.0" endY="42.0" layoutX="376.0" layoutY="143.0" startX="-39.0" startY="42.0" />
+      <Line endX="-18.0" endY="43.0" layoutX="414.0" layoutY="141.0" startX="-42.0" startY="43.0" />
+      <Line endX="-5.0" endY="48.0" layoutX="293.0" layoutY="98.0" startX="-25.0" startY="48.0" />
+      <Line endX="-5.0" endY="49.0" layoutX="328.0" layoutY="97.0" startX="-26.0" startY="49.0" />
+      <Line endX="-6.0" endY="49.0" layoutX="329.0" layoutY="170.0" startX="-27.0" startY="49.0" />
+      <Line endX="-8.0" endY="49.0" layoutX="296.0" layoutY="170.0" startX="-28.0" startY="49.0" />
+      <Line endX="-19.0" endY="30.0" layoutX="280.0" layoutY="147.0" startX="-19.0" startY="6.0" />
+      <Line endX="-18.0" endY="29.0" layoutX="279.0" layoutY="183.0" startX="-18.0" startY="8.0" />
+      <Line endX="-18.0" endY="29.0" layoutX="348.0" layoutY="183.0" startX="-18.0" startY="8.0" />
+      <Line endX="-18.0" endY="30.0" layoutX="348.0" layoutY="147.0" startX="-18.0" startY="6.0" />
+      <Line endX="-18.0" endY="23.0" layoutX="313.0" layoutY="116.0" startX="-18.0" startY="4.0" />
+      <Line endX="-19.0" endY="20.0" layoutX="314.0" layoutY="86.0" startX="-19.0" />
+      <Line endX="-19.0" endY="21.0" layoutX="314.0" layoutY="231.0" startX="-19.0" startY="-5.0" />
+      <Line endX="-19.0" endY="11.0" layoutX="314.0" layoutY="275.0" startX="-19.0" startY="-9.0" />
+      <StackPane layoutX="239.0" layoutY="12.0" prefHeight="48.0" prefWidth="129.0" />
    </children>
 </AnchorPane>
