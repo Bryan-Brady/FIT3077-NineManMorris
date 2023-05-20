@@ -3,11 +3,8 @@ package com.example.ninemanmorris;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import com.example.ninemanmorris.Node;
-import com.example.ninemanmorris.Chip;
+import java.util.regex.*;
 
-
-import java.lang.reflect.Array;
 
 public class Board {
 
@@ -16,7 +13,9 @@ public class Board {
     private AnchorPane layout;
 
     private static Chip currentChip = null;
-
+    private static Player player1 = new Player(PlayerType.PLAYER1);
+    private static Player player2 = new Player(PlayerType.PLAYER2);
+    private static Player currentPlayer = player1;
     ///////////////////////////////////////////////////
     //Player 1 //
     @FXML
@@ -166,6 +165,7 @@ public class Board {
     }
     @FXML
     void onChipClick(MouseEvent event) {
+        System.out.println("Current Player: " + this.currentPlayer.getPlayerType() );
         //temporary testing function
 //        double x = rand.nextInt(-100, 300);
 //        double y = rand.nextInt(0, 300);
@@ -179,18 +179,34 @@ public class Board {
 //        System.out.println("node 1 X:" + node1.getLayoutX());
 //        System.out.println("node 1 Y:" + node1.getLayoutY());
 
-        Chip thisChip = ((Chip)event.getSource());
 
-        this.currentChip = thisChip;
+        Chip thisChip = ((Chip)event.getSource());
+        // To make sure that only player1 can click chip1 likewise for player2
+        boolean correctChip1 = thisChip.getId().startsWith("p1");
+        boolean correctChip2 = thisChip.getId().startsWith("p2");
+        System.out.println("This is chip 1 " + correctChip1);
+        System.out.println("This is chip 2 " + correctChip2);
+
+        if(currentPlayer.getPlayerType() == PlayerType.PLAYER1 && correctChip1){
+            // If chip belong to player 1
+            System.out.println("Current Player: " + this.currentPlayer.getPlayerType() );
+            this.currentChip = thisChip;
+        }
+
+        if(currentPlayer.getPlayerType() == PlayerType.PLAYER2 && correctChip2){
+            // If chip belong to player 1
+            this.currentChip = thisChip;
+        }
+
 
         System.out.println("Piece selected: " + thisChip.getId());
-        System.out.println("Piece X: " + thisChip.getLayoutX());
-        System.out.println("Piece Y: " + thisChip.getLayoutY());
+//        System.out.println("Piece X: " + thisChip.getLayoutX());
+//        System.out.println("Piece Y: " + thisChip.getLayoutY());
 
-        System.out.println(event.getSource());
-        System.out.println(event.getTarget());
-        System.out.println(thisChip);
-        System.out.println(thisChip.getId());
+//        System.out.println(event.getSource());
+//        System.out.println(event.getTarget());
+//        System.out.println(thisChip);
+//        System.out.println(thisChip.getId());
 
     }
 
@@ -203,13 +219,24 @@ public class Board {
     }
 
     public void setPos(Chip thisChip, Node thisNode) {
+        // Setting the chips on the board position
         thisChip.setLayoutX(thisNode.getLayoutX());
         thisChip.setLayoutY(thisNode.getLayoutY());
         this.currentChip = null;
+        // Changing player turns
+        if(currentPlayer.getPlayerType() == PlayerType.PLAYER1){
+            // If current player is player 1 then change to player 2
+            this.currentPlayer = player2;
+            System.out.println("Current Player: player1");
+        }else {
+            // It means the current player is player 2 so change it to player 1
+            this.currentPlayer = player1;
+            System.out.println("Current Player: player2");
+        }
 
         System.out.println("This Piece: " + thisChip.getId());
         System.out.println("Moved to: " + thisNode.getId());
-        System.out.println("Current Piece X: " + thisChip.getLayoutX());
-        System.out.println("Current Piece Y: " + thisChip.getLayoutY());
+//        System.out.println("Current Piece X: " + thisChip.getLayoutX());
+//        System.out.println("Current Piece Y: " + thisChip.getLayoutY());
     }
 }
