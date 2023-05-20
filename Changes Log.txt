@@ -1,0 +1,8 @@
+21/05:
+1. Made Move singleton class 
+- Because there can only be one Move functionalitty in the entire program 
+- Add setPos() to Move class 
+
+2. Add method playterTurn to Player class 
+
+3. Strong Depedencies of Chip, Player, and Move to Board 

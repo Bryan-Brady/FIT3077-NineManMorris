@@ -10,7 +10,7 @@ import java.io.IOException;
 public class NMMApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(NMMApplication.class.getResource("hello-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(NMMApplication.class.getResource("NNM-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 600);
         stage.setTitle("Nine Man Morris");
         stage.setScene(scene);
@@ -23,7 +23,7 @@ public class NMMApplication extends Application {
 }
 
 
-//Default layout for hello-view.fxml
+//Default layout for NNM-view.fxml
 
 //<?xml version="1.0" encoding="UTF-8"?>
 //
