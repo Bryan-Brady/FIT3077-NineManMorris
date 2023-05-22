@@ -79,6 +79,7 @@ public class Board {
     @FXML
     private Chip p209;
 
+
     ////////////////////////////////////////////////////////
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
     @FXML
@@ -130,6 +131,128 @@ public class Board {
     @FXML
     private Node node24;
 
+//    public Board(Node node1, Node node2, Node node3, Node node4, Node node5, Node node6, Node node7, Node node8, Node node9, Node node10, Node node11, Node node12, Node node13, Node node14, Node node15, Node node16, Node node17, Node node18, Node node19, Node node20, Node node21, Node node22, Node node23, Node node24) {
+//        this.node1 = node1;
+//        this.node2 = node2;
+//        this.node3 = node3;
+//        this.node4 = node4;
+//        this.node5 = node5;
+//        this.node6 = node6;
+//        this.node7 = node7;
+//        this.node8 = node8;
+//        this.node9 = node9;
+//        this.node10 = node10;
+//        this.node11 = node11;
+//        this.node12 = node12;
+//        this.node13 = node13;
+//        this.node14 = node14;
+//        this.node15 = node15;
+//        this.node16 = node16;
+//        this.node17 = node17;
+//        this.node18 = node18;
+//        this.node19 = node19;
+//        this.node20 = node20;
+//        this.node21 = node21;
+//        this.node22 = node22;
+//        this.node23 = node23;
+//        this.node24 = node24;
+//    }
+
+    public Node getNode1() {
+        return node1;
+    }
+
+    public Node getNode2() {
+        return node2;
+    }
+
+    public Node getNode3() {
+        return node3;
+    }
+
+    public Node getNode4() {
+        return node4;
+    }
+
+    public Node getNode5() {
+        return node5;
+    }
+
+    public Node getNode6() {
+        return node6;
+    }
+
+    public Node getNode7() {
+        return node7;
+    }
+
+    public Node getNode8() {
+        return node8;
+    }
+
+    public Node getNode9() {
+        return node9;
+    }
+
+    public Node getNode10() {
+        return node10;
+    }
+
+    public Node getNode11() {
+        return node11;
+    }
+
+    public Node getNode12() {
+        return node12;
+    }
+
+    public Node getNode13() {
+        return node13;
+    }
+
+    public Node getNode14() {
+        return node14;
+    }
+
+    public Node getNode15() {
+        return node15;
+    }
+
+    public Node getNode16() {
+        return node16;
+    }
+
+    public Node getNode17() {
+        return node17;
+    }
+
+    public Node getNode18() {
+        return node18;
+    }
+
+    public Node getNode19() {
+        return node19;
+    }
+
+    public Node getNode20() {
+        return node20;
+    }
+
+    public Node getNode21() {
+        return node21;
+    }
+
+    public Node getNode22() {
+        return node22;
+    }
+
+    public Node getNode23() {
+        return node23;
+    }
+
+    public Node getNode24() {
+        return node24;
+    }
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 //    Random rand = new Random();
