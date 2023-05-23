@@ -1,6 +1,5 @@
 package com.example.ninemanmorris;
 
-import javafx.beans.property.DoubleProperty;
 import javafx.scene.shape.Circle;
 
 public class Chip extends Circle {
@@ -14,7 +13,10 @@ public class Chip extends Circle {
     }
 
     public Chip checkPlayerChip(Chip thisChip, Player currentPlayer){
-        // To make sure that only player1 can click chip1 likewise for player2
+        /*
+        To ensure only one player can click on their individual chip
+        It takes the currentPlayer and the chip and sets that chip to the current player that is selected
+        */
         boolean correctChip1 = thisChip.getId().startsWith("p1");
         boolean correctChip2 = thisChip.getId().startsWith("p2");
         Chip currentChip = null;
@@ -30,23 +32,24 @@ public class Chip extends Circle {
         return currentChip;
     }
 
+    // Getter for chips status
     public ChipStatus getChipStatus() {
         return chipStatus;
     }
 
+    // Setter for chip status
     public void setChipStatus(ChipStatus chipStatus) {
         this.chipStatus = chipStatus;
     }
+
+    // Getter for chips location
     public Node getChipLocation() {
         return chipLocation;
     }
 
+    // Setter for chips location
     public void setChipLocation(Node chipLocation) {
         this.chipLocation = chipLocation;
-    }
-
-    public boolean isPartOfAMill() {
-        return isPartOfAMill;
     }
 
     public void setPartOfAMill(boolean partOfAMill) {
