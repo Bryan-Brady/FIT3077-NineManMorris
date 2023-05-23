@@ -30,11 +30,8 @@ public class Player {
         if (thePlayer.getPlayerType() == PlayerType.PLAYER1) {
             // If current player is player 1 then change to player 2
             thePlayer = board.getPlayer2();
-//            System.out.println("Current Player:" + thePlayer.getPlayerType());
         } else {
-            // It means the current player is player 2 so change it to player 1
             thePlayer = board.getPlayer1();
-//            System.out.println("Current Player:" + thePlayer.getPlayerType());
         }
 
         return thePlayer;

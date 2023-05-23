@@ -4,16 +4,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.effect.Glow;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-
-import static kotlin.jvm.internal.Reflection.typeOf;
 
 
 public class Board {
 
     //Objects within this is instantiated immediately upon running HelloApplication.java
-    @FXML
-    private AnchorPane layout;
     private Chip currentChip = null;
     private Player1 player1 = Player1.getInstance();
     private Player2 player2 = Player2.getInstance();
@@ -23,8 +18,6 @@ public class Board {
     private Move move = Move.getInstance();
 
 
-
-    ///////////////////////////////////////////////////
     //Player 1 //
     @FXML
     private Chip p101;
@@ -151,17 +144,11 @@ public class Board {
 
     private Chip[] chipsP1Array = {p101, p102, p103, p104, p105, p106, p107, p108, p109};
     private Chip[] chipsP2Array = {p201, p202, p203, p204, p205, p206, p207, p208, p209};
-//    private Node[] nodeArray = {node1, node2, node3, node4, node5, node6, node7, node8, node9, node10,
-//                                node11, node12, node13, node14, node15, node16, node17, node18, node19,
-//                                node20,node21, node22, node23, node24};
+
     private Line[] lineArray = {line1, line2, line3, line4, line5, line6, line7, line8,
                                 line9, line10, line11, line12, line13, line14, line15,
                                 line16};
 
-    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
-//    Random rand = new Random();
-
-    //Here are the functions for the Button, Ball (or piece) and Node
     @FXML
     public void initialize() {
         node1.setNodeNeighbours(new Node[]{node2, node10});

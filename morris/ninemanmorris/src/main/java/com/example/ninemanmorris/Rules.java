@@ -21,19 +21,6 @@ public class Rules {
                 line.setAMill(false);
             }
         }
-//        for(Line line : lineArray){
-//            for(Node node : line.getLineMember()){
-//                if(node.getChip() != null) {
-//
-//                    if (node.getLinePart().get(0).isAMill() || node.getLinePart().get(1).isAMill()) {
-//                        System.out.println(node.getChip().getId());
-//                        node.getChip().setPartOfAMill(true);
-//                    } else {
-//                        node.getChip().setPartOfAMill(true);
-//                    }
-//                }
-//            }
-//        }
 
     }
     public boolean isMillMade(Line line) {
