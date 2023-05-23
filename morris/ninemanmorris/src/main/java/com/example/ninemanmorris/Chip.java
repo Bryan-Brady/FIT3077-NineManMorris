@@ -5,13 +5,8 @@ import javafx.scene.shape.Circle;
 
 public class Chip extends Circle {
     private ChipStatus chipStatus = ChipStatus.RESERVE;
-<<<<<<< Updated upstream
-    private Node chipLocation;
-
-=======
     private Node chipLocation = null;
     private boolean isPartOfAMill;
->>>>>>> Stashed changes
 
 
     public Chip(){
@@ -49,8 +44,6 @@ public class Chip extends Circle {
     public void setChipLocation(Node chipLocation) {
         this.chipLocation = chipLocation;
     }
-<<<<<<< Updated upstream
-=======
 
     public boolean isPartOfAMill() {
         return isPartOfAMill;
@@ -59,5 +52,4 @@ public class Chip extends Circle {
     public void setPartOfAMill(boolean partOfAMill) {
         isPartOfAMill = partOfAMill;
     }
->>>>>>> Stashed changes
 }

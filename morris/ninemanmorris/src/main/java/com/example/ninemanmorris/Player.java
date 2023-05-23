@@ -7,10 +7,7 @@ public class Player {
     private int chipsAlive = 0;
     private int chipsDead = 0;
     private PlayerType playerType;
-<<<<<<< Updated upstream
-=======
     private boolean millMade = false;
->>>>>>> Stashed changes
     private boolean playerMoved = false;
     public Player(PlayerType playerType){
         this.playerType = playerType;
@@ -25,20 +22,6 @@ public class Player {
     * Input  : currentPlayer : The current player
     *          player1/2 : Are static objects
     * Return : currentPlayer, the player that can make their turn */
-<<<<<<< Updated upstream
-    public Player playerTurn(Player currentPlayer){
-        Board board = new Board();
-        Player thePlayer = currentPlayer;
-        if(thePlayer.getPlayerType() == PlayerType.PLAYER1){
-            // If current player is player 1 then change to player 2
-            thePlayer = board.getPlayer2();
-            System.out.println("Current Player:" + currentPlayer.getPlayerType());
-        }else {
-            // It means the current player is player 2 so change it to player 1
-            thePlayer = board.getPlayer1();
-            System.out.println("Current Player:" + currentPlayer.getPlayerType());
-        }
-=======
     public Player checkPlayerTurn(Player currentPlayer){
         Board board = new Board();
         Player thePlayer = currentPlayer;
@@ -54,7 +37,6 @@ public class Player {
 //            System.out.println("Current Player:" + thePlayer.getPlayerType());
         }
 
->>>>>>> Stashed changes
         return thePlayer;
     }
 
@@ -65,8 +47,6 @@ public class Player {
     public void reduceChipsReserve() {
         this.chipsReserve -= 1;
     }
-<<<<<<< Updated upstream
-=======
     public void addChipsAlive() {
         this.chipsAlive += 1;
     }
@@ -74,7 +54,6 @@ public class Player {
         this.chipsAlive -= 1;
         this.chipsDead += 1;
     }
->>>>>>> Stashed changes
 
     public int getChipsAlive() {
         return chipsAlive;
@@ -99,8 +78,6 @@ public class Player {
     public void setPlayerMoved(boolean playerMoved) {
         this.playerMoved = playerMoved;
     }
-<<<<<<< Updated upstream
-=======
 
     public boolean hasMill() {
         return millMade;
@@ -109,5 +86,4 @@ public class Player {
     public void setMillMade(boolean millMade) {
         this.millMade = millMade;
     }
->>>>>>> Stashed changes
 }
