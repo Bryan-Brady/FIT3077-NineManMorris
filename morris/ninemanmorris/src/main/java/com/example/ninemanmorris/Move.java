@@ -1,5 +1,6 @@
 package com.example.ninemanmorris;
 
+<<<<<<< Updated upstream
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -7,6 +8,11 @@ public class Move {
     private static Move move_instance = null;
 
     private static Node prevNode = null;
+=======
+public class Move {
+    private static Move move_instance = null;
+    private static Rules rules = new Rules();
+>>>>>>> Stashed changes
 
     public String s;
     private Move(){
@@ -25,6 +31,7 @@ public class Move {
         // Setting the chips on the board position
         currentChip.setLayoutX(thisNode.getLayoutX());
         currentChip.setLayoutY(thisNode.getLayoutY());
+<<<<<<< Updated upstream
         currentChip.setChipLocation(thisNode);
         
         // Sets so that current Node knows which chip is on top of it
@@ -43,12 +50,40 @@ public class Move {
         boolean initialMoveCondition = (currentPlayer.getChipsReserve() <= 9 && currentPlayer.getChipsReserve() != 0 && currentChip.getChipStatus() == ChipStatus.RESERVE);
         boolean remainingThreeMoveCondition = (currentPlayer.getChipsAlive() <= 3 && currentPlayer.getChipsReserve() == 0 && currentChip.getChipStatus() == ChipStatus.ALIVE);
         if(initialMoveCondition){
+=======
+        if(currentChip.getChipLocation() != null){
+            // Remove connection from current chip location to the chip that just moved
+            currentChip.getChipLocation().setChip(null);
+        }
+        // Make new connection between current location and chip
+        currentChip.setChipLocation(thisNode);
+        thisNode.setChip(currentChip);
+
+        // Check three in a row here
+        for(Line line : thisNode.getLinePart()) {
+//            System.out.println(rules.isMillMade(line));
+            if (rules.isMillMade(line) && !currentPlayer.hasMill()) {
+                System.out.println("IN IF STATEMENT MILL MOVE");
+//                System.out.println("IT IS THREE IN A ROW");
+                currentPlayer.setMillMade(true);
+            }
+        }
+        // If not here, then if you click chip and click a node, then it is going to be counted as a valid movement
+        if(!currentPlayer.isPlayerMoved())currentPlayer.setPlayerMoved(true);
+
+
+    }
+    public void moveAnyWhere(Chip currentChip,Node thisNode, Player currentPlayer){
+        if(rules.isInitialMoveCondition(currentChip, currentPlayer)){
+            currentPlayer.addChipsAlive();
+>>>>>>> Stashed changes
             // Can move anywhere
             this.setPos(currentChip, thisNode, currentPlayer);
             // Set status on the chip, stating it is on the board
             currentChip.setChipStatus(ChipStatus.ALIVE);
             // Reduce chips reserve
             currentPlayer.reduceChipsReserve();
+<<<<<<< Updated upstream
         }
 
         if(remainingThreeMoveCondition){
@@ -66,10 +101,48 @@ public class Move {
         // Move adjacent
         if(Arrays.asList(thisNode.getNodeNeighbours()).contains(currentChip.getChipLocation()) && moveAdjacentCondition){
             System.out.println("IN MOVE ADJ");
+=======
+
+        }
+
+        if(rules.isRemainingThreeMoveCondition(currentChip, currentPlayer)){
             this.setPos(currentChip, thisNode, currentPlayer);
         }
     }
 
+    public void moveKillChip(Chip targetChip, Player currentPlayer){
+        System.out.println(rules.chipIsPartOfMill(targetChip));
+        if(!rules.chipIsPartOfMill(targetChip)) {
+            if(targetChip.getChipLocation() != null){
+                // Remove connection from current chip location to the chip that just moved
+                targetChip.getChipLocation().setChip(null);
+            }
+            // if click valid chip
+            if (targetChip.getId().startsWith("p1")) {
+                targetChip.setLayoutX(61);
+                targetChip.setLayoutY(500);
+            } else {
+                targetChip.setLayoutX(509);
+                targetChip.setLayoutY(500);
+            }
+            // Set chip status to be dead
+            targetChip.setChipStatus(ChipStatus.DEAD);
+            currentPlayer.reduceChipsAlive();
+            currentPlayer.setPlayerMoved(true);
+            // Setting back to not three in a row for player
+            currentPlayer.setMillMade(false);
+        }
+    }
+
+    public void moveAdjacent(Chip currentChip, Node thisNode, Player currentPlayer){
+
+        if(rules.isMoveAdjacent(currentChip, thisNode, currentPlayer)){
+>>>>>>> Stashed changes
+            this.setPos(currentChip, thisNode, currentPlayer);
+        }
+    }
+
+<<<<<<< Updated upstream
     //Checks whether there is a MILL by using the stored value of getCurrentChip() executed in setNode(...) function
     // [essentially this means that node needs to know what chip is on top of it for the check to work]
     // Plus it needs all the objects that has been created in the Board class.
@@ -414,4 +487,6 @@ public class Move {
         System.out.println("-------------");
     }
 
+=======
+>>>>>>> Stashed changes
 }

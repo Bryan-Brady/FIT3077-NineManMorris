@@ -3,6 +3,7 @@ package com.example.ninemanmorris;
 import javafx.fxml.FXML;
 import javafx.scene.shape.Circle;
 
+<<<<<<< Updated upstream
 
 
 public class Node extends Circle {
@@ -55,6 +56,15 @@ public class Node extends Circle {
     private static Node node24;
     private Node[] nodeNeighbours;
     private Chip currentChip = null;
+=======
+import java.util.ArrayList;
+
+
+public class Node extends Circle {
+    private Node[] nodeNeighbours;
+    private ArrayList<Line> linePart = new ArrayList<Line>();
+    private Chip chip = null;
+>>>>>>> Stashed changes
     // Implementation of Node
     public Node(){
         super();
@@ -68,6 +78,7 @@ public class Node extends Circle {
         this.nodeNeighbours = nodeNeighbours;
     }
 
+<<<<<<< Updated upstream
     public Chip getCurrentChip() {
         return currentChip;
     }
@@ -268,5 +279,21 @@ public class Node extends Circle {
 
     public static void setNode24(Node node24) {
         Node.node24 = node24;
+=======
+    public Chip getChip() {
+        return chip;
+    }
+
+    public void setChip(Chip chip) {
+        this.chip = chip;
+    }
+
+    public ArrayList<Line> getLinePart() {
+        return linePart;
+    }
+
+    public void addLinePart(Line linePart) {
+        this.linePart.add(linePart);
+>>>>>>> Stashed changes
     }
 }

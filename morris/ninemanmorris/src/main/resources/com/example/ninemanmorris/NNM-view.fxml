@@ -54,6 +54,7 @@
       <Chip fx:id="p107" fill="DODGERBLUE" layoutX="61.0" layoutY="346.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
       <Chip fx:id="p108" fill="DODGERBLUE" layoutX="61.0" layoutY="374.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
       <Chip fx:id="p109" fill="DODGERBLUE" layoutX="61.0" layoutY="98.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+<<<<<<< Updated upstream
       <Chip fx:id="p201" fill="#ff0202" layoutX="506.0" layoutY="60.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
       <Chip fx:id="p202" fill="#ff0202" layoutX="509.0" layoutY="139.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
       <Chip fx:id="p203" fill="#ff0202" layoutX="506.0" layoutY="188.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
@@ -65,6 +66,21 @@
       <Chip fx:id="p209" fill="#ff0202" layoutX="507.0" layoutY="98.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
 
 
+=======
+      <Chip fx:id="p201" fill="#ff0202" layoutX="509.0" layoutY="60.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+      <Chip fx:id="p202" fill="#ff0202" layoutX="509.0" layoutY="139.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+      <Chip fx:id="p203" fill="#ff0202" layoutX="509.0" layoutY="188.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+      <Chip fx:id="p204" fill="#ff0202" layoutX="509.0" layoutY="226.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+      <Chip fx:id="p205" fill="#ff0202" layoutX="509.0" layoutY="263.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+      <Chip fx:id="p206" fill="#ff0202" layoutX="509.0" layoutY="305.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+      <Chip fx:id="p207" fill="#ff0202" layoutX="509.0" layoutY="344.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+      <Chip fx:id="p208" fill="#ff0202" layoutX="509.0" layoutY="374.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+      <Chip fx:id="p209" fill="#ff0202" layoutX="509.0" layoutY="98.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="OUTSIDE" />
+<!--      <Chip fill="#ff0202" layoutX="61.0" layoutY="500.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="OUTSIDE" />-->
+
+
+<!--      <Line endX="115" endY="0" layoutX="300" layoutY="100" onMouseClicked="#onLineClick" startX="-106" startY="0" />-->
+>>>>>>> Stashed changes
       <Line endX="-19.0" endY="50.0" layoutX="201.0" layoutY="127.0" onMouseClicked="#onLineClick" startX="-19.0" startY="-39.0" />
       <Line endX="22.0" endY="44.0" layoutX="266.0" layoutY="35.0" onMouseClicked="#onLineClick" startX="-77.0" startY="44.0" />
       <Line endX="39.0" endY="44.0" layoutX="357.0" layoutY="35.0"  onMouseClicked="#onLineClick" startX="-55.0" startY="44.0" />
