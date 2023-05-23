@@ -30,6 +30,8 @@ public class Move {
         // Sets so that current Node knows which chip is on top of it
         // Also records and set the previous node the chip was in to NULL
         thisNode.setCurrentChip(currentChip);
+
+        System.out.println("Node: " + thisNode.getId() + " has the current chip: " + thisNode.getCurrentChip());
 //        prevNode.setCurrentChip(null);
 //        prevNode = thisNode;
         
@@ -71,241 +73,345 @@ public class Move {
     //Checks whether there is a MILL by using the stored value of getCurrentChip() executed in setNode(...) function
     // [essentially this means that node needs to know what chip is on top of it for the check to work]
     // Plus it needs all the objects that has been created in the Board class.
-    public void checkMillMade(Node thisNode, Player currentPlayer){
-        Board board = new Board();
+    public void checkMillMade(Node thisNode, Player currentPlayer) {
 
-        //Center nodes
-        Node node2 = board.getNode2();
-        Node node5 = board.getNode5();
-        Node node8 = board.getNode8();
-        Node node10 = board.getNode10();
-        Node node11 = board.getNode11();
-        Node node12 = board.getNode12();
-        Node node13 = board.getNode13();
-        Node node14 = board.getNode14();
-        Node node15 = board.getNode15();
-        Node node17 = board.getNode17();
-        Node node20 = board.getNode20();
-        Node node23 = board.getNode23();
-
-        //Other Edge nodes
-        Node node1 = board.getNode2();
-        Node node3 = board.getNode2();
-        Node node4 = board.getNode2();
-        Node node6 = board.getNode2();
-        Node node7 = board.getNode2();
-        Node node9 = board.getNode2();
-        Node node16 = board.getNode2();
-        Node node18 = board.getNode2();
-        Node node19 = board.getNode2();
-        Node node21 = board.getNode2();
-        Node node22 = board.getNode2();
-        Node node24 = board.getNode2();
-
-//        ArrayList<Node> middleNodes = new ArrayList<Node>();
-//        middleNodes.add(node2);
-//        middleNodes.add(node5);
-//        middleNodes.add(node8);
-//        middleNodes.add(node10);
-//        middleNodes.add(node11);
-//        middleNodes.add(node12);
-//        middleNodes.add(node13);
-//        middleNodes.add(node14);
-//        middleNodes.add(node15);
-//        middleNodes.add(node17);
-//        middleNodes.add(node20);
-//        middleNodes.add(node23);
+        System.out.println("-- CHECK MILL MADE BY " + currentPlayer.getPlayerType() + " --");
 
         //Cases for player1
+        //THESE ARE PLAYER 1 MILLS
+        //Basically only check if there is 3 pieces that forms a mill only
         if (currentPlayer.getPlayerType() == PlayerType.PLAYER1) {
-            if (thisNode.equals(node2)) {
-                // 1 2 3
-                if (node1.getCurrentChip().getId().startsWith("p1") && node2.getCurrentChip().getId().startsWith("p1") && node3.getCurrentChip().getId().startsWith("p1")) {
-                    System.out.println("P1 Mill");
-                }
 
-            } else if (thisNode.equals(node5)) {
-                // 4 5 6
-                if(node4.getCurrentChip().getId().startsWith("p1") && node5.getCurrentChip().getId().startsWith("p1") && node6.getCurrentChip().getId().startsWith("p1")){
-                    System.out.println("P1 Mill");
-                }
-                // 2 5 8
-                if(node2.getCurrentChip().getId().startsWith("p1") && node5.getCurrentChip().getId().startsWith("p1") && node8.getCurrentChip().getId().startsWith("p1")){
-                    System.out.println("P1 Mill");
-                }
-
-            } else if (thisNode.equals(node8)) {
-                // 7 8 9
-                if(node7.getCurrentChip().getId().startsWith("p1") && node8.getCurrentChip().getId().startsWith("p1") && node9.getCurrentChip().getId().startsWith("p1")){
-                    System.out.println("P1 Mill");
-                }
-
-            } else if (thisNode.equals(node10)) {
-                // 1 10 22
-                if(node1.getCurrentChip().getId().startsWith("p1") && node10.getCurrentChip().getId().startsWith("p1") && node22.getCurrentChip().getId().startsWith("p1")){
-                    System.out.println("P1 Mill");
-                }
-
-            } else if (thisNode.equals(node11)) {
-                // 4 11 19
-                if(node4.getCurrentChip().getId().startsWith("p1") && node11.getCurrentChip().getId().startsWith("p1") && node19.getCurrentChip().getId().startsWith("p1")){
-                    System.out.println("P1 Mill");
-                }
-                // 10 11 12
-                if(node10.getCurrentChip().getId().startsWith("p1") && node11.getCurrentChip().getId().startsWith("p1") && node12.getCurrentChip().getId().startsWith("p1")){
-                    System.out.println("P1 Mill");
-                }
-
-            } else if (thisNode.equals(node12)) {
-                // 7 12 16
-                if(node7.getCurrentChip().getId().startsWith("p1") && node12.getCurrentChip().getId().startsWith("p1") && node16.getCurrentChip().getId().startsWith("p1")){
-                    System.out.println("P1 Mill");
-                }
-
-            } else if (thisNode.equals(node13)) {
-                // 9 13 18
-                if(node9.getCurrentChip().getId().startsWith("p1") && node13.getCurrentChip().getId().startsWith("p1") && node18.getCurrentChip().getId().startsWith("p1")){
-                    System.out.println("P1 Mill");
-                }
-
-            } else if (thisNode.equals(node14)) {
-                // 6 14 21
-                if(node6.getCurrentChip().getId().startsWith("p1") && node14.getCurrentChip().getId().startsWith("p1") && node21.getCurrentChip().getId().startsWith("p1")){
-                    System.out.println("P1 Mill");
-                }
-                // 13 14 15
-                if(node13.getCurrentChip().getId().startsWith("p1") && node14.getCurrentChip().getId().startsWith("p1") && node15.getCurrentChip().getId().startsWith("p1")){
-                    System.out.println("P1 Mill");
-                }
-
-            } else if (thisNode.equals(node15)) {
-                // 3 15 24
-                if(node3.getCurrentChip().getId().startsWith("p1") && node15.getCurrentChip().getId().startsWith("p1") && node24.getCurrentChip().getId().startsWith("p1")){
-                    System.out.println("P1 Mill");
-                }
-
-            } else if (thisNode.equals(node17)) {
-                // 16 17 18
-                if(node16.getCurrentChip().getId().startsWith("p1") && node17.getCurrentChip().getId().startsWith("p1") && node18.getCurrentChip().getId().startsWith("p1")){
-                    System.out.println("P1 Mill");
-                }
-
-            } else if (thisNode.equals(node20)) {
-                // 17 20 23
-                if(node17.getCurrentChip().getId().startsWith("p1") && node20.getCurrentChip().getId().startsWith("p1") && node23.getCurrentChip().getId().startsWith("p1")){
-                    System.out.println("P1 Mill");
-                }
-                // 19 20 21
-                if(node19.getCurrentChip().getId().startsWith("p1") && node20.getCurrentChip().getId().startsWith("p1") && node21.getCurrentChip().getId().startsWith("p1")){
-                    System.out.println("P1 Mill");
-                }
-
-            } else if (thisNode.equals(node23)) {
-                // 22 23 24
-                if(node22.getCurrentChip().getId().startsWith("p1") && node23.getCurrentChip().getId().startsWith("p1") && node24.getCurrentChip().getId().startsWith("p1")){
-                    System.out.println("P1 Mill");
-                }
-
+            // 1 2 3
+            System.out.println("Nodes [1 2 3]");
+            //First, checks if pieces of node1 OR node3 is empty. If empty, do not do anything
+            if (Node.getNode1().getCurrentChip() == null || Node.getNode2().getCurrentChip() == null || Node.getNode3().getCurrentChip() == null) {
+                System.out.println("NO MILL");
+            }
+            //If asses first and second, third checks if the pieces was player 1 pieces. If so, its a mill
+            else if (Node.getNode1().getCurrentChip().getId().startsWith("p1") && Node.getNode2().getCurrentChip().getId().startsWith("p1") && Node.getNode3().getCurrentChip().getId().startsWith("p1")) {
+                System.out.println(">> P1 Mill [1 2 3]");
             } else {
-                System.out.println(currentPlayer + " Currently No Mill");
-                System.out.println(node1 + " " + node2 + " " + node3);
+                System.out.println(">>>>> Invalid Mill <<<<<");
+            }
+
+
+            // 4 5 6
+            System.out.println("Nodes [4 5 6]");
+            if (Node.getNode4().getCurrentChip() == null || Node.getNode5().getCurrentChip() == null || Node.getNode6().getCurrentChip() == null) {
+                System.out.println("NO MILL");
+            } else if (Node.getNode4().getCurrentChip().getId().startsWith("p1") && Node.getNode5().getCurrentChip().getId().startsWith("p1") && Node.getNode6().getCurrentChip().getId().startsWith("p1")) {
+                System.out.println(">> P1 Mill [4 5 6]");
+            } else {
+                System.out.println(">>>>> Invalid Mill <<<<<");
+            }
+
+            // 2 5 8
+            System.out.println("Nodes [2 5 8]");
+            if (Node.getNode2().getCurrentChip() == null || Node.getNode5().getCurrentChip() == null || Node.getNode8().getCurrentChip() == null) {
+                System.out.println("NO MILL");
+            } else if (Node.getNode2().getCurrentChip().getId().startsWith("p1") && Node.getNode5().getCurrentChip().getId().startsWith("p1") && Node.getNode8().getCurrentChip().getId().startsWith("p1")) {
+                System.out.println(">> P1 Mill [2 5 8]");
+            } else {
+                System.out.println(">>>>> Invalid Mill <<<<<");
+            }
+
+            // 7 8 9
+            System.out.println("Nodes [7 8 9]");
+            if (Node.getNode7().getCurrentChip() == null || Node.getNode8().getCurrentChip() == null || Node.getNode9().getCurrentChip() == null) {
+                System.out.println("NO MILL");
+            } else if (Node.getNode7().getCurrentChip().getId().startsWith("p1") && Node.getNode8().getCurrentChip().getId().startsWith("p1") && Node.getNode9().getCurrentChip().getId().startsWith("p1")) {
+                System.out.println(">> P1 Mill [7 8 9]");
+            } else {
+                System.out.println(">>>>> Invalid Mill <<<<<");
+            }
+
+            // 1 10 22
+            System.out.println("Nodes [1 10 22]");
+            if (Node.getNode1().getCurrentChip() == null || Node.getNode10().getCurrentChip() == null || Node.getNode22().getCurrentChip() == null) {
+                System.out.println("NO MILL");
+            } else if (Node.getNode1().getCurrentChip().getId().startsWith("p1") && Node.getNode10().getCurrentChip().getId().startsWith("p1") && Node.getNode22().getCurrentChip().getId().startsWith("p1")) {
+                System.out.println(">> P1 Mill [1 10 22]");
+            } else {
+                System.out.println(">>>>> Invalid Mill <<<<<");
+            }
+
+            // 4 11 19
+            System.out.println("Nodes [4 11 19]");
+            if (Node.getNode4().getCurrentChip() == null || Node.getNode11().getCurrentChip() == null || Node.getNode19().getCurrentChip() == null) {
+                System.out.println("NO MILL");
+            } else if (Node.getNode4().getCurrentChip().getId().startsWith("p1") && Node.getNode11().getCurrentChip().getId().startsWith("p1") && Node.getNode19().getCurrentChip().getId().startsWith("p1")) {
+                System.out.println(">> P1 Mill [4 11 19]");
+            } else {
+                System.out.println(">>>>> Invalid Mill <<<<<");
+            }
+
+            // 10 11 12
+            System.out.println("Nodes [10 11 12]");
+            if (Node.getNode10().getCurrentChip() == null || Node.getNode11().getCurrentChip() == null || Node.getNode12().getCurrentChip() == null) {
+                System.out.println("NO MILL");
+            } else if (Node.getNode10().getCurrentChip().getId().startsWith("p1") && Node.getNode11().getCurrentChip().getId().startsWith("p1") && Node.getNode12().getCurrentChip().getId().startsWith("p1")) {
+                System.out.println(">> P1 Mill [10 11 12]");
+            } else {
+                System.out.println(">>>>> Invalid Mill <<<<<");
+            }
+
+            // 7 12 16
+            System.out.println("Nodes [7 12 16]");
+            if (Node.getNode7().getCurrentChip() == null || Node.getNode12().getCurrentChip() == null || Node.getNode16().getCurrentChip() == null) {
+                System.out.println("NO MILL");
+            } else if (Node.getNode7().getCurrentChip().getId().startsWith("p1") && Node.getNode12().getCurrentChip().getId().startsWith("p1") && Node.getNode16().getCurrentChip().getId().startsWith("p1")) {
+                System.out.println(">> P1 Mill [7 12 16]");
+            } else {
+                System.out.println(">>>>> Invalid Mill <<<<<");
+            }
+
+            // 9 13 18
+            System.out.println("Nodes [9 13 18]");
+            if (Node.getNode9().getCurrentChip() == null || Node.getNode13().getCurrentChip() == null || Node.getNode18().getCurrentChip() == null) {
+                System.out.println("NO MILL");
+            } else if (Node.getNode9().getCurrentChip().getId().startsWith("p1") && Node.getNode13().getCurrentChip().getId().startsWith("p1") && Node.getNode18().getCurrentChip().getId().startsWith("p1")) {
+                System.out.println(">> P1 Mill [9 13 18]");
+            } else {
+                System.out.println(">>>>> Invalid Mill <<<<<");
+            }
+
+            // 6 14 21
+            System.out.println("Nodes [6 14 21]");
+            if (Node.getNode6().getCurrentChip() == null || Node.getNode14().getCurrentChip() == null || Node.getNode21().getCurrentChip() == null) {
+                System.out.println("NO MILL");
+            } else if (Node.getNode6().getCurrentChip().getId().startsWith("p1") && Node.getNode14().getCurrentChip().getId().startsWith("p1") && Node.getNode21().getCurrentChip().getId().startsWith("p1")) {
+                System.out.println(">> P1 Mill [6 14 21]");
+            } else {
+                System.out.println(">>>>> Invalid Mill <<<<<");
+            }
+            // 13 14 15
+            System.out.println("Nodes [13 14 15]");
+            if (Node.getNode13().getCurrentChip() == null || Node.getNode14().getCurrentChip() == null || Node.getNode15().getCurrentChip() == null) {
+                System.out.println("NO MILL");
+            } else if (Node.getNode13().getCurrentChip().getId().startsWith("p1") && Node.getNode14().getCurrentChip().getId().startsWith("p1") && Node.getNode15().getCurrentChip().getId().startsWith("p1")) {
+                System.out.println(">> P1 Mill [13 14 15]");
+            } else {
+                System.out.println(">>>>> Invalid Mill <<<<<");
+            }
+
+            // 3 15 24
+            System.out.println("Nodes [3 15 24]");
+            if (Node.getNode3().getCurrentChip() == null || Node.getNode15().getCurrentChip() == null || Node.getNode24().getCurrentChip() == null) {
+                System.out.println("NO MILL");
+            } else if (Node.getNode3().getCurrentChip().getId().startsWith("p1") && Node.getNode15().getCurrentChip().getId().startsWith("p1") && Node.getNode24().getCurrentChip().getId().startsWith("p1")) {
+                System.out.println(">> P1 Mill [3 15 24]");
+            } else {
+                System.out.println(">>>>> Invalid Mill <<<<<");
+            }
+
+            // 16 17 18
+            System.out.println("Nodes [16 17 18]");
+            if (Node.getNode16().getCurrentChip() == null || Node.getNode17().getCurrentChip() == null || Node.getNode18().getCurrentChip() == null) {
+                System.out.println("NO MILL");
+            } else if (Node.getNode16().getCurrentChip().getId().startsWith("p1") && Node.getNode17().getCurrentChip().getId().startsWith("p1") && Node.getNode18().getCurrentChip().getId().startsWith("p1")) {
+                System.out.println(">> P1 Mill [16 17 18]");
+            } else {
+                System.out.println(">>>>> Invalid Mill <<<<<");
+            }
+
+            // 17 20 23
+            System.out.println("Nodes [17 20 23]");
+            if (Node.getNode17().getCurrentChip() == null || Node.getNode20().getCurrentChip() == null || Node.getNode23().getCurrentChip() == null) {
+                System.out.println("NO MILL");
+            } else if (Node.getNode17().getCurrentChip().getId().startsWith("p1") && Node.getNode20().getCurrentChip().getId().startsWith("p1") && Node.getNode23().getCurrentChip().getId().startsWith("p1")) {
+                System.out.println(">> P1 Mill [17 20 23]");
+            } else {
+                System.out.println(">>>>> Invalid Mill <<<<<");
+            }
+            // 19 20 21
+            System.out.println("Nodes [19 20 21]");
+            if (Node.getNode19().getCurrentChip() == null || Node.getNode20().getCurrentChip() == null || Node.getNode21().getCurrentChip() == null) {
+                System.out.println("NO MILL");
+            } else if (Node.getNode19().getCurrentChip().getId().startsWith("p1") && Node.getNode20().getCurrentChip().getId().startsWith("p1") && Node.getNode21().getCurrentChip().getId().startsWith("p1")) {
+                System.out.println(">> P1 Mill [19 20 21]");
+            } else {
+                System.out.println(">>>>> Invalid Mill <<<<<");
+            }
+
+            // 22 23 24
+            System.out.println("Nodes [22 23 24]");
+            if (Node.getNode22().getCurrentChip() == null || Node.getNode23().getCurrentChip() == null || Node.getNode24().getCurrentChip() == null) {
+                System.out.println("NO MILL");
+            } else if (Node.getNode22().getCurrentChip().getId().startsWith("p1") && Node.getNode23().getCurrentChip().getId().startsWith("p1") && Node.getNode24().getCurrentChip().getId().startsWith("p1")) {
+                System.out.println(">> P1 Mill [22 23 24]");
+            } else {
+                System.out.println(">>>>> Invalid Mill <<<<<");
             }
         }
 
-        //Cases for player2
+        //Cases for player 2
+        //Basically only check if there is 3 pieces that forms a mill only
         if (currentPlayer.getPlayerType() == PlayerType.PLAYER2) {
-            if (thisNode.equals(node2)) {
-                // 1 2 3
-                if (node1.getCurrentChip().getId().startsWith("p2") && node2.getCurrentChip().getId().startsWith("p2") && node3.getCurrentChip().getId().startsWith("p2")) {
-                    System.out.println("p2 Mill");
-                }
 
-            } else if (thisNode.equals(node5)) {
-                // 4 5 6
-                if(node4.getCurrentChip().getId().startsWith("p2") && node5.getCurrentChip().getId().startsWith("p2") && node6.getCurrentChip().getId().startsWith("p2")){
-                    System.out.println("p2 Mill");
-                }
-                // 2 5 8
-                if(node2.getCurrentChip().getId().startsWith("p2") && node5.getCurrentChip().getId().startsWith("p2") && node8.getCurrentChip().getId().startsWith("p2")){
-                    System.out.println("p2 Mill");
-                }
-
-            } else if (thisNode.equals(node8)) {
-                // 7 8 9
-                if(node7.getCurrentChip().getId().startsWith("p2") && node8.getCurrentChip().getId().startsWith("p2") && node9.getCurrentChip().getId().startsWith("p2")){
-                    System.out.println("p2 Mill");
-                }
-
-            } else if (thisNode.equals(node10)) {
-                // 1 10 22
-                if(node1.getCurrentChip().getId().startsWith("p2") && node10.getCurrentChip().getId().startsWith("p2") && node22.getCurrentChip().getId().startsWith("p2")){
-                    System.out.println("p2 Mill");
-                }
-
-            } else if (thisNode.equals(node11)) {
-                // 4 11 19
-                if(node4.getCurrentChip().getId().startsWith("p2") && node11.getCurrentChip().getId().startsWith("p2") && node19.getCurrentChip().getId().startsWith("p2")){
-                    System.out.println("p2 Mill");
-                }
-                // 10 11 12
-                if(node10.getCurrentChip().getId().startsWith("p2") && node11.getCurrentChip().getId().startsWith("p2") && node12.getCurrentChip().getId().startsWith("p2")){
-                    System.out.println("p2 Mill");
-                }
-
-            } else if (thisNode.equals(node12)) {
-                // 7 12 16
-                if(node7.getCurrentChip().getId().startsWith("p2") && node12.getCurrentChip().getId().startsWith("p2") && node16.getCurrentChip().getId().startsWith("p2")){
-                    System.out.println("p2 Mill");
-                }
-
-            } else if (thisNode.equals(node13)) {
-                // 9 13 18
-                if(node9.getCurrentChip().getId().startsWith("p2") && node13.getCurrentChip().getId().startsWith("p2") && node18.getCurrentChip().getId().startsWith("p2")){
-                    System.out.println("p2 Mill");
-                }
-
-            } else if (thisNode.equals(node14)) {
-                // 6 14 21
-                if(node6.getCurrentChip().getId().startsWith("p2") && node14.getCurrentChip().getId().startsWith("p2") && node21.getCurrentChip().getId().startsWith("p2")){
-                    System.out.println("p2 Mill");
-                }
-                // 13 14 15
-                if(node13.getCurrentChip().getId().startsWith("p2") && node14.getCurrentChip().getId().startsWith("p2") && node15.getCurrentChip().getId().startsWith("p2")){
-                    System.out.println("p2 Mill");
-                }
-
-            } else if (thisNode.equals(node15)) {
-                // 3 15 24
-                if(node3.getCurrentChip().getId().startsWith("p2") && node15.getCurrentChip().getId().startsWith("p2") && node24.getCurrentChip().getId().startsWith("p2")){
-                    System.out.println("p2 Mill");
-                }
-
-            } else if (thisNode.equals(node17)) {
-                // 16 17 18
-                if(node16.getCurrentChip().getId().startsWith("p2") && node17.getCurrentChip().getId().startsWith("p2") && node18.getCurrentChip().getId().startsWith("p2")){
-                    System.out.println("p2 Mill");
-                }
-
-            } else if (thisNode.equals(node20)) {
-                // 17 20 23
-                if(node17.getCurrentChip().getId().startsWith("p2") && node20.getCurrentChip().getId().startsWith("p2") && node23.getCurrentChip().getId().startsWith("p2")){
-                    System.out.println("p2 Mill");
-                }
-                // 19 20 21
-                if(node19.getCurrentChip().getId().startsWith("p2") && node20.getCurrentChip().getId().startsWith("p2") && node21.getCurrentChip().getId().startsWith("p2")){
-                    System.out.println("p2 Mill");
-                }
-
-            } else if (thisNode.equals(node23)) {
-                // 22 23 24
-                if(node22.getCurrentChip().getId().startsWith("p2") && node23.getCurrentChip().getId().startsWith("p2") && node24.getCurrentChip().getId().startsWith("p2")){
-                    System.out.println("p2 Mill");
-                }
+            // 1 2 3
+            System.out.println("Nodes [1 2 3]");
+            //First, checks if pieces of node1 OR node3 is empty. If empty, do not do anything
+            if (Node.getNode1().getCurrentChip() == null || Node.getNode2().getCurrentChip() == null || Node.getNode3().getCurrentChip() == null) {
+                System.out.println("NO MILL");
+            }
+            //If asses first and second, third checks if the pieces was player 1 pieces. If so, its a mill
+            else if (Node.getNode1().getCurrentChip().getId().startsWith("p2") && Node.getNode2().getCurrentChip().getId().startsWith("p2") && Node.getNode3().getCurrentChip().getId().startsWith("p2")) {
+                System.out.println(">> P2 Mill [1 2 3]");
             } else {
-                System.out.println(currentPlayer + " Currently No Mill");
+                System.out.println(">>>>> Invalid Mill <<<<<");
+            }
+
+
+            // 4 5 6
+            System.out.println("Nodes [4 5 6]");
+            if (Node.getNode4().getCurrentChip() == null || Node.getNode5().getCurrentChip() == null || Node.getNode6().getCurrentChip() == null) {
+                System.out.println("NO MILL");
+            } else if (Node.getNode4().getCurrentChip().getId().startsWith("p2") && Node.getNode5().getCurrentChip().getId().startsWith("p2") && Node.getNode6().getCurrentChip().getId().startsWith("p2")) {
+                System.out.println(">> P2 Mill [4 5 6]");
+            } else {
+                System.out.println(">>>>> Invalid Mill <<<<<");
+            }
+
+            // 2 5 8
+            System.out.println("Nodes [2 5 8]");
+            if (Node.getNode2().getCurrentChip() == null || Node.getNode5().getCurrentChip() == null || Node.getNode8().getCurrentChip() == null) {
+                System.out.println("NO MILL");
+            } else if (Node.getNode2().getCurrentChip().getId().startsWith("p2") && Node.getNode5().getCurrentChip().getId().startsWith("p2") && Node.getNode8().getCurrentChip().getId().startsWith("p2")) {
+                System.out.println(">> P2 Mill [2 5 8]");
+            } else {
+                System.out.println(">>>>> Invalid Mill <<<<<");
+            }
+
+            // 7 8 9
+            System.out.println("Nodes [7 8 9]");
+            if (Node.getNode7().getCurrentChip() == null || Node.getNode8().getCurrentChip() == null || Node.getNode9().getCurrentChip() == null) {
+                System.out.println("NO MILL");
+            } else if (Node.getNode7().getCurrentChip().getId().startsWith("p2") && Node.getNode8().getCurrentChip().getId().startsWith("p2") && Node.getNode9().getCurrentChip().getId().startsWith("p2")) {
+                System.out.println(">> P2 Mill [7 8 9]");
+            } else {
+                System.out.println(">>>>> Invalid Mill <<<<<");
+            }
+
+            // 1 10 22
+            System.out.println("Nodes [1 10 22]");
+            if (Node.getNode1().getCurrentChip() == null || Node.getNode10().getCurrentChip() == null || Node.getNode22().getCurrentChip() == null) {
+                System.out.println("NO MILL");
+            } else if (Node.getNode1().getCurrentChip().getId().startsWith("p2") && Node.getNode10().getCurrentChip().getId().startsWith("p2") && Node.getNode22().getCurrentChip().getId().startsWith("p2")) {
+                System.out.println(">> P2 Mill [1 10 22]");
+            } else {
+                System.out.println(">>>>> Invalid Mill <<<<<");
+            }
+
+            // 4 11 19
+            System.out.println("Nodes [4 11 19]");
+            if (Node.getNode4().getCurrentChip() == null || Node.getNode11().getCurrentChip() == null || Node.getNode19().getCurrentChip() == null) {
+                System.out.println("NO MILL");
+            } else if (Node.getNode4().getCurrentChip().getId().startsWith("p2") && Node.getNode11().getCurrentChip().getId().startsWith("p2") && Node.getNode19().getCurrentChip().getId().startsWith("p2")) {
+                System.out.println(">> P2 Mill [4 11 19]");
+            } else {
+                System.out.println(">>>>> Invalid Mill <<<<<");
+            }
+
+            // 10 11 12
+            System.out.println("Nodes [10 11 12]");
+            if (Node.getNode10().getCurrentChip() == null || Node.getNode11().getCurrentChip() == null || Node.getNode12().getCurrentChip() == null) {
+                System.out.println("NO MILL");
+            } else if (Node.getNode10().getCurrentChip().getId().startsWith("p2") && Node.getNode11().getCurrentChip().getId().startsWith("p2") && Node.getNode12().getCurrentChip().getId().startsWith("p2")) {
+                System.out.println(">> P2 Mill [10 11 12]");
+            } else {
+                System.out.println(">>>>> Invalid Mill <<<<<");
+            }
+
+            // 7 12 16
+            System.out.println("Nodes [7 12 16]");
+            if (Node.getNode7().getCurrentChip() == null || Node.getNode12().getCurrentChip() == null || Node.getNode16().getCurrentChip() == null) {
+                System.out.println("NO MILL");
+            } else if (Node.getNode7().getCurrentChip().getId().startsWith("p2") && Node.getNode12().getCurrentChip().getId().startsWith("p2") && Node.getNode16().getCurrentChip().getId().startsWith("p2")) {
+                System.out.println(">> P2 Mill [7 12 16]");
+            } else {
+                System.out.println(">>>>> Invalid Mill <<<<<");
+            }
+
+            // 9 13 18
+            System.out.println("Nodes [9 13 18]");
+            if (Node.getNode9().getCurrentChip() == null || Node.getNode13().getCurrentChip() == null || Node.getNode18().getCurrentChip() == null) {
+                System.out.println("NO MILL");
+            } else if (Node.getNode9().getCurrentChip().getId().startsWith("p2") && Node.getNode13().getCurrentChip().getId().startsWith("p2") && Node.getNode18().getCurrentChip().getId().startsWith("p2")) {
+                System.out.println(">> P2 Mill [9 13 18]");
+            } else {
+                System.out.println(">>>>> Invalid Mill <<<<<");
+            }
+
+            // 6 14 21
+            System.out.println("Nodes [6 14 21]");
+            if (Node.getNode6().getCurrentChip() == null || Node.getNode14().getCurrentChip() == null || Node.getNode21().getCurrentChip() == null) {
+                System.out.println("NO MILL");
+            } else if (Node.getNode6().getCurrentChip().getId().startsWith("p2") && Node.getNode14().getCurrentChip().getId().startsWith("p2") && Node.getNode21().getCurrentChip().getId().startsWith("p2")) {
+                System.out.println(">> P2 Mill [6 14 21]");
+            } else {
+                System.out.println(">>>>> Invalid Mill <<<<<");
+            }
+            // 13 14 15
+            System.out.println("Nodes [13 14 15]");
+            if (Node.getNode13().getCurrentChip() == null || Node.getNode14().getCurrentChip() == null || Node.getNode15().getCurrentChip() == null) {
+                System.out.println("NO MILL");
+            } else if (Node.getNode13().getCurrentChip().getId().startsWith("p2") && Node.getNode14().getCurrentChip().getId().startsWith("p2") && Node.getNode15().getCurrentChip().getId().startsWith("p2")) {
+                System.out.println(">> P2 Mill [13 14 15]");
+            } else {
+                System.out.println(">>>>> Invalid Mill <<<<<");
+            }
+
+            // 3 15 24
+            System.out.println("Nodes [3 15 24]");
+            if (Node.getNode3().getCurrentChip() == null || Node.getNode15().getCurrentChip() == null || Node.getNode24().getCurrentChip() == null) {
+                System.out.println("NO MILL");
+            } else if (Node.getNode3().getCurrentChip().getId().startsWith("p2") && Node.getNode15().getCurrentChip().getId().startsWith("p2") && Node.getNode24().getCurrentChip().getId().startsWith("p2")) {
+                System.out.println(">> P2 Mill [3 15 24]");
+            } else {
+                System.out.println(">>>>> Invalid Mill <<<<<");
+            }
+
+            // 16 17 18
+            System.out.println("Nodes [16 17 18]");
+            if (Node.getNode16().getCurrentChip() == null || Node.getNode17().getCurrentChip() == null || Node.getNode18().getCurrentChip() == null) {
+                System.out.println("NO MILL");
+            } else if (Node.getNode16().getCurrentChip().getId().startsWith("p2") && Node.getNode17().getCurrentChip().getId().startsWith("p2") && Node.getNode18().getCurrentChip().getId().startsWith("p2")) {
+                System.out.println(">> P2 Mill [16 17 18]");
+            } else {
+                System.out.println(">>>>> Invalid Mill <<<<<");
+            }
+
+            // 17 20 23
+            System.out.println("Nodes [17 20 23]");
+            if (Node.getNode17().getCurrentChip() == null || Node.getNode20().getCurrentChip() == null || Node.getNode23().getCurrentChip() == null) {
+                System.out.println("NO MILL");
+            } else if (Node.getNode17().getCurrentChip().getId().startsWith("p2") && Node.getNode20().getCurrentChip().getId().startsWith("p2") && Node.getNode23().getCurrentChip().getId().startsWith("p2")) {
+                System.out.println(">> P2 Mill [17 20 23]");
+            } else {
+                System.out.println(">>>>> Invalid Mill <<<<<");
+            }
+            // 19 20 21
+            System.out.println("Nodes [19 20 21]");
+            if (Node.getNode19().getCurrentChip() == null || Node.getNode20().getCurrentChip() == null || Node.getNode21().getCurrentChip() == null) {
+                System.out.println("NO MILL");
+            } else if (Node.getNode19().getCurrentChip().getId().startsWith("p2") && Node.getNode20().getCurrentChip().getId().startsWith("p2") && Node.getNode21().getCurrentChip().getId().startsWith("p2")) {
+                System.out.println(">> P2 Mill [19 20 21]");
+            } else {
+                System.out.println(">>>>> Invalid Mill <<<<<");
+            }
+
+            // 22 23 24
+            System.out.println("Nodes [22 23 24]");
+            if (Node.getNode22().getCurrentChip() == null || Node.getNode23().getCurrentChip() == null || Node.getNode24().getCurrentChip() == null) {
+                System.out.println("NO MILL");
+            } else if (Node.getNode22().getCurrentChip().getId().startsWith("p2") && Node.getNode23().getCurrentChip().getId().startsWith("p2") && Node.getNode24().getCurrentChip().getId().startsWith("p2")) {
+                System.out.println(">> P2 Mill [22 23 24]");
+            } else {
+                System.out.println(">>>>> Invalid Mill <<<<<");
             }
         }
-
-    };
+        System.out.println("-------------");
+    }
 
 }

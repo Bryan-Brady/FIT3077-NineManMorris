@@ -158,102 +158,6 @@ public class Board {
 //        this.node24 = node24;
 //    }
 
-    public Node getNode1() {
-        return node1;
-    }
-
-    public Node getNode2() {
-        return node2;
-    }
-
-    public Node getNode3() {
-        return node3;
-    }
-
-    public Node getNode4() {
-        return node4;
-    }
-
-    public Node getNode5() {
-        return node5;
-    }
-
-    public Node getNode6() {
-        return node6;
-    }
-
-    public Node getNode7() {
-        return node7;
-    }
-
-    public Node getNode8() {
-        return node8;
-    }
-
-    public Node getNode9() {
-        return node9;
-    }
-
-    public Node getNode10() {
-        return node10;
-    }
-
-    public Node getNode11() {
-        return node11;
-    }
-
-    public Node getNode12() {
-        return node12;
-    }
-
-    public Node getNode13() {
-        return node13;
-    }
-
-    public Node getNode14() {
-        return node14;
-    }
-
-    public Node getNode15() {
-        return node15;
-    }
-
-    public Node getNode16() {
-        return node16;
-    }
-
-    public Node getNode17() {
-        return node17;
-    }
-
-    public Node getNode18() {
-        return node18;
-    }
-
-    public Node getNode19() {
-        return node19;
-    }
-
-    public Node getNode20() {
-        return node20;
-    }
-
-    public Node getNode21() {
-        return node21;
-    }
-
-    public Node getNode22() {
-        return node22;
-    }
-
-    public Node getNode23() {
-        return node23;
-    }
-
-    public Node getNode24() {
-        return node24;
-    }
-
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 //    Random rand = new Random();
 
@@ -285,6 +189,31 @@ public class Board {
         node22.setNodeNeighbours(new Node[]{node10, node23});
         node23.setNodeNeighbours(new Node[]{node22, node24, node20});
         node24.setNodeNeighbours(new Node[]{node23, node15});
+
+        node1.setNode1(node1);
+        node2.setNode2(node2);
+        node3.setNode3(node3);
+        node4.setNode4(node4);
+        node5.setNode5(node5);
+        node6.setNode6(node6);
+        node7.setNode7(node7);
+        node8.setNode8(node8);
+        node9.setNode9(node9);
+        node10.setNode10(node10);
+        node11.setNode11(node11);
+        node12.setNode12(node12);
+        node13.setNode13(node13);
+        node14.setNode14(node14);
+        node15.setNode15(node15);
+        node16.setNode16(node16);
+        node17.setNode17(node17);
+        node18.setNode18(node18);
+        node19.setNode19(node19);
+        node20.setNode20(node20);
+        node21.setNode21(node21);
+        node22.setNode22(node22);
+        node23.setNode23(node23);
+        node24.setNode24(node24);
     }
     @FXML
     void onLayoutClick() {
