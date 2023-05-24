@@ -12,6 +12,15 @@ public class Chip extends Circle {
         super();
     }
 
+    /** Function that checks the chips if its a  player 1 or player 2 chip.
+
+     Input :
+     currentChip : The currently selected chip
+     currentPlayer: The current player's turn
+
+     Return  : currentChip : Returns the currentChip
+
+     */
     public Chip checkPlayerChip(Chip thisChip, Player currentPlayer){
         /*
         To ensure only one player can click on their individual chip

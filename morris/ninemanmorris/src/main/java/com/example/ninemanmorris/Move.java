@@ -16,6 +16,17 @@ public class Move {
         }
         return move_instance;
     }
+
+    /** Function to set the position of the currently clicked chip to the clicked node of the current player.
+
+     Input :
+     currentChip : The currently selected chip
+     thisNode: The currently clicked node
+     currentPlayer: The current player's turn
+
+     Return  : N/A
+
+     */
     private void setPos(Chip currentChip,Node thisNode, Player currentPlayer){
 
         // Setting the chips on the board position
@@ -43,6 +54,17 @@ public class Move {
 
 
     }
+
+    /** Function that allows the chip to be able to move anywhere when clicked.
+
+     Input :
+     currentChip : The currently selected chip
+     thisNode: The currently clicked node
+     currentPlayer: The current player's turn
+
+     Return  : N/A
+
+     */
     public void moveAnyWhere(Chip currentChip,Node thisNode, Player currentPlayer){
         if(rules.isInitialMoveCondition(currentChip, currentPlayer)){
             currentPlayer.addChipsAlive();
@@ -60,6 +82,15 @@ public class Move {
         }
     }
 
+    /** Function that, if legal, allows the killing of an opponent chip if the current player made a mill.
+
+     Input :
+     currentChip : The currently selected chip
+     currentPlayer: The current player's turn
+
+     Return  : N/A
+
+     */
     public void moveKillChip(Chip targetChip, Player currentPlayer){
         System.out.println(rules.chipIsPartOfMill(targetChip));
         if(!rules.chipIsPartOfMill(targetChip)) {
@@ -77,8 +108,12 @@ public class Move {
             }
             // Set chip status to be dead
             targetChip.setChipStatus(ChipStatus.DEAD);
-            currentPlayer.reduceChipsAlive();
+
+            // Reduces the enemies' chips
+            Player enemyPlayer = currentPlayer.checkPlayerTurn(currentPlayer);
+            enemyPlayer.reduceChipsAlive();
             currentPlayer.setPlayerMoved(true);
+
             // Setting back to not three in a row for player
             currentPlayer.setMillMade(false);
         }

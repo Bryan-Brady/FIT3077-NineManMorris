@@ -149,6 +149,13 @@ public class Board {
                                 line9, line10, line11, line12, line13, line14, line15,
                                 line16};
 
+    /** Function that is initialised upon opening the game; initialising the nodes and their neighbours,
+     * and the lines (I.e possible mill combinations).
+
+     Input : N/A
+     Return  : N/A
+
+     */
     @FXML
     public void initialize() {
         node1.setNodeNeighbours(new Node[]{node2, node10});
@@ -210,10 +217,14 @@ public class Board {
 //        }
     }
 
+    /** Function that is executed if any chip is clicked on the board. Very important
+
+     Input : event : The event of a mouse, click event.
+     Return  : N/A
+
+     */
     @FXML
     void onChipClick(MouseEvent event) {
-
-
 
         Glow glow = new Glow();
         glow.setLevel(.8);
@@ -239,6 +250,12 @@ public class Board {
 
 
 
+    /** Function that is executed if any node is clicked on the board. Very important
+
+     Input : event : The event of a mouse, click event.
+     Return  : N/A
+
+     */
     @FXML
     void onNodeClick(MouseEvent event) {
 

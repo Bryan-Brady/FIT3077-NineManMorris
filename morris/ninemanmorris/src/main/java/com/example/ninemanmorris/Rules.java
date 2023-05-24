@@ -7,6 +7,13 @@ public class Rules {
     public Rules(){
     }
 
+    /** Function to set the Mill status of the board; if a mill was created by a particular line, set the chip to
+     * be part of the mill so that it cannot be removed.
+
+     Input : lineArray :  The array of the possible lines which a mill can be made *
+     Return  : N/A
+
+     */
     public void setMillStatusBoard(Line[] lineArray){
         for(Line line : lineArray) {
             boolean millCreated = this.isMillMade(line);
@@ -23,6 +30,12 @@ public class Rules {
         }
 
     }
+    /** Function to check if a mill has been made
+
+     Input : line : The group of nodes where a mill can be made *
+     Return  : millCreated : Boolean, true/false if a mill is made
+
+     */
     public boolean isMillMade(Line line) {
         ArrayList<Chip> chipsToBeCompared = new ArrayList<Chip>();
         boolean millCreated = false;
@@ -49,6 +62,16 @@ public class Rules {
         return millCreated;
     }
 
+
+    /** Function to check if the target chip is part of another mill (IMPORTANT)
+
+     Input :
+     targetChip : The chip that will be checked *
+
+
+     Return  : A boolean flag indicating if the chip is part of another mill or not
+
+     */
     public boolean chipIsPartOfMill(Chip targetChip){
         // The line that is associated with this chip
         ArrayList<Line> chipLineGroup = targetChip.getChipLocation().getLinePart();
@@ -62,6 +85,18 @@ public class Rules {
             return false;
         }
     }
+    /** Function to check if the game is over I.E, a win condition has been met
+
+     Input :
+     player1 : The current player1 *
+     player2 : The current player2
+     ChipsP1Array: the array of player 1's chips
+     ChipsP2Array: the array of player 2's chips
+
+
+     Return  : Null
+
+     */
     public Player isGameEnd(Player player1, Player player2, Chip[] chipsP1Array, Chip[] chipsP2Array){
         /** will return the loser **/
         boolean stillCanMoveRemainingThree1 = true;
