@@ -132,10 +132,10 @@ public class Rules {
             }
         }
         if((!stillCanMoveRemainingThree1 && !stillCanMoveAdjacent1 )|| (player1.getChipsAlive() == 2 && player1.getChipsReserve() == 0) ){
-            return player1;
+            return player2;
         }
         if((!stillCanMoveRemainingThree2 && !stillCanMoveAdjacent2 ) ||(player2.getChipsAlive() == 2 && player1.getChipsReserve() == 0) ){
-            return player2;
+            return player1;
         }
         return null;
     }

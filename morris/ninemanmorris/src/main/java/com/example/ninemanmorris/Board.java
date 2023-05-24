@@ -246,6 +246,13 @@ public class Board {
                 this.currentChip = null;
             }
         }
+        if(rules.isGameEnd(player1, player2, chipsP1Array, chipsP2Array) != null){
+            System.out.println("The Winner Is : " + rules.isGameEnd(player1, player2, chipsP1Array, chipsP2Array).getPlayerType());
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("WINNER");
+            alert.setContentText("The Winner Is : " + rules.isGameEnd(player1, player2, chipsP1Array, chipsP2Array).getPlayerType());
+            alert.showAndWait();
+        }
     }
 
 
@@ -269,13 +276,6 @@ public class Board {
             move.moveAnyWhere(this.currentChip, thisNode, this.currentPlayer);
             move.moveAdjacent(this.currentChip, thisNode, this.currentPlayer);
             rules.setMillStatusBoard(lineArray);
-            if(rules.isGameEnd(player1, player2, chipsP1Array, chipsP2Array) != null){
-                System.out.println("The Winner Is : " + rules.isGameEnd(player1, player2, chipsP1Array, chipsP2Array).getPlayerType());
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("WINNER");
-                alert.setContentText("The Winner Is : " + rules.isGameEnd(player1, player2, chipsP1Array, chipsP2Array).getPlayerType());
-                alert.showAndWait();
-            }
             // Check if player have three in a row
             if(!this.currentPlayer.hasMill()) {
                 // Go in this if, only if player don't have three in a row
