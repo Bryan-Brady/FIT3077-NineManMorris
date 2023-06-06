@@ -78,6 +78,7 @@ public class Move {
         }
 
         if(rules.isRemainingThreeMoveCondition(currentChip, currentPlayer)){
+            System.out.println("Three piece remain");
             this.setPos(currentChip, thisNode, currentPlayer);
         }
     }
@@ -122,6 +123,7 @@ public class Move {
     public void moveAdjacent(Chip currentChip, Node thisNode, Player currentPlayer){
 
         if(rules.isMoveAdjacent(currentChip, thisNode, currentPlayer)){
+            System.out.println("Adjacent Movement");
             this.setPos(currentChip, thisNode, currentPlayer);
         }
     }

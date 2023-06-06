@@ -85,56 +85,140 @@ public class Rules {
             return false;
         }
     }
-    /** Function to check if the game is over I.E, a win condition has been met
+    /** Function to check if the game is over. I.E, in this case, a losing condition has been met.
 
      Input :
-     player1 : The current player1 *
+     player1 : The current player1
      player2 : The current player2
-     ChipsP1Array: the array of player 1's chips
-     ChipsP2Array: the array of player 2's chips
+     ChipsP1ArrayList: the array list of player 1's chips
+     ChipsP2ArrayList: the array list of player 2's chips
 
 
-     Return  : Null
+     Return  : Null OR player1/player2 (winners) if losing conditions are met
 
      */
-    public Player isGameEnd(Player player1, Player player2, Chip[] chipsP1Array, Chip[] chipsP2Array){
-        /** will return the loser **/
+    public Player isGameEnd(Player player1, Player player2, ArrayList<Chip> chipsP1ArrayList, ArrayList<Chip> chipsP2ArrayList){
+        /** will return the winner **/
         boolean stillCanMoveRemainingThree1 = true;
-        boolean stillCanMoveAdjacent1 = true;
+        boolean stillCanMoveAdjacent1 = false;
         boolean stillCanMoveRemainingThree2 = true;
-        boolean stillCanMoveAdjacent2 = true;
-        // If no more valid moves
-        for(Chip chip : chipsP1Array){
-            if(chip != null) {
+        boolean stillCanMoveAdjacent2 = false;
+
+//        System.out.println("P1 array: ");
+//        System.out.println(chipsP1Array);
+
+        System.out.println("P1 arraylist: ");
+        System.out.println(chipsP1ArrayList);
+
+//        System.out.println("P2 array: ");
+//        System.out.println(chipsP2Array);
+
+        System.out.println("P2 arraylist: ");
+        System.out.println(chipsP2ArrayList);
+
+        // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+        //Checks for validity of adjacent moves for:
+        // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+
+        System.out.println("~~~~~~~~~~~~~~~~~~~~");
+        System.out.println("Player 1");
+        System.out.println("~~~~~~~~~~~~~~~~~~~~");
+
+        for(Chip chip : chipsP1ArrayList){
+//            System.out.println("P1: ");
+//            System.out.println(chip);
+            // Quick check to see if chip not null, is set onto a location, and is alive (is alive is here to resolve strange bug)
+            if(chip != null && chip.getChipLocation() != null && (chip.getChipStatus() == ChipStatus.ALIVE)) {
                 stillCanMoveRemainingThree1 = this.isRemainingThreeMoveCondition(chip, player1);
                 for (Node node : chip.getChipLocation().getNodeNeighbours()) {
+                    // The only instance where any player lose because of no more legal moves, is if ALL the neighboring nodes
+                    // have a chip in it. (parent node also needs to be alive)
+
+                    // So, move adjacent will always be false UNLESS there is a neighbour with NO chip.
+                    // If neighbour = no chip, still has a legal move (if statement below catches that)
+                    // but if all neighbour = occupied by a chip, then it will still be false (by default) which means
+                    // player no longer has legal adjacent move
+
                     if (node.getChip() == null) {
-                        // Means no chip present so can make move
-                        stillCanMoveAdjacent1 = false;
-                    } else {
+                        // Any instance of no chip in neighbouring nodes, still have legal move.
+                        System.out.println("LEGAL MOVE AVAILABLE ON NODE: ");
+                        System.out.println(node.getId());
+                        System.out.println("NEIGHBOUR OF (parent): ");
+                        System.out.println(chip.getChipLocation().getId());
+
                         stillCanMoveAdjacent1 = true;
+                    }
+                    else {
+                        System.out.println("Invalid adjacent movement");
+                        System.out.println(node.getId());
+                        System.out.println(chip.getChipLocation().getId());
                     }
                 }
             }
         }
 
-        for(Chip chip : chipsP2Array){
-            if(chip != null) {
+        // the same logic applies for player 2
+        System.out.println("~~~~~~~~~~~~~~~~~~~~");
+        System.out.println("Player 2");
+        System.out.println("~~~~~~~~~~~~~~~~~~~~");
+        for(Chip chip : chipsP2ArrayList){
+//            System.out.println("P2: ");
+//            System.out.println(chip);
+            if(chip != null && chip.getChipLocation() != null && (chip.getChipStatus() == ChipStatus.ALIVE)) {
                 stillCanMoveRemainingThree2 = this.isRemainingThreeMoveCondition(chip, player2);
                 for (Node node : chip.getChipLocation().getNodeNeighbours()) {
                     if (node.getChip() == null) {
-                        // Means no chip present so can make move
-                        stillCanMoveAdjacent2 = false;
-                    } else {
+                        System.out.println("LEGAL MOVE AVAILABLE ON NODE: ");
+                        System.out.println(node.getId());
+                        System.out.println("NEIGHBOUR OF (parent): ");
+                        System.out.println(chip.getChipLocation().getId());
                         stillCanMoveAdjacent2 = true;
+
+                    }
+                    else {
+                        System.out.println("Invalid adjacent movement");
+                        System.out.println(node.getId());
+                        System.out.println(chip.getChipLocation().getId());
                     }
                 }
             }
         }
-        if((!stillCanMoveRemainingThree1 && !stillCanMoveAdjacent1 )|| (player1.getChipsAlive() == 2 && player1.getChipsReserve() == 0) ){
+        System.out.println("~~~~~~~~~~~~~~~~~~~~");
+        // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+
+        //Condition of losing:
+        //Scenario 1:
+        // - player more than 3 ALIVE chips             AND
+        // - player cannot move adjacent                AND
+        // - both players have placed all their chips
+
+        //Scenario 2:
+        // - player less than 3 ALIVE chips             AND
+        // - player have placed all their chip
+        if((!stillCanMoveRemainingThree1 && !stillCanMoveAdjacent1 && (player1.getChipsReserve() == 0 && player2.getChipsReserve() == 0) || (player1.getChipsAlive() == 2 && player1.getChipsReserve() == 0) )){
+            System.out.println("Player 2 epic victory royale");
+
+            // No more legal moves
+            System.out.println("Player 1 lost via: ");
+            System.out.println("No legal moves? ");
+            System.out.println(!stillCanMoveRemainingThree1 && !stillCanMoveAdjacent1);
+
+            // Chips alive lesser than 3 (2)
+            System.out.println("Chips lesser than 3 (or == 2) ");
+            System.out.println(player1.getChipsAlive() == 2 && player1.getChipsReserve() == 0);
             return player2;
         }
-        if((!stillCanMoveRemainingThree2 && !stillCanMoveAdjacent2 ) ||(player2.getChipsAlive() == 2 && player1.getChipsReserve() == 0) ){
+        if((!stillCanMoveRemainingThree2 && !stillCanMoveAdjacent2 && (player1.getChipsReserve() == 0 && player2.getChipsReserve() == 0) || (player2.getChipsAlive() == 2 && player2.getChipsReserve() == 0) )){
+            System.out.println("Player 1 chicken dinner");
+
+            // No more legal moves
+            System.out.println("Player 2 lost via: ");
+            System.out.println("No legal moves? ");
+            System.out.println(!stillCanMoveRemainingThree2 && !stillCanMoveAdjacent2);
+
+            // Chips alive lesser than 3 (2)
+            System.out.println("Chips lesser than 3 (or == 2) ");
+            System.out.println(player2.getChipsAlive() == 2 && player2.getChipsReserve() == 0);
             return player1;
         }
         return null;

@@ -5,6 +5,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.effect.Glow;
 import javafx.scene.input.MouseEvent;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 
 public class Board {
 
@@ -142,8 +145,11 @@ public class Board {
     private Line line15 = new Line();
     private Line line16 = new Line();
 
-    private Chip[] chipsP1Array = {p101, p102, p103, p104, p105, p106, p107, p108, p109};
-    private Chip[] chipsP2Array = {p201, p202, p203, p204, p205, p206, p207, p208, p209};
+//    private Chip[] chipsP1Array = {p101, p102, p103, p104, p105, p106, p107, p108, p109};
+//    private Chip[] chipsP2Array = {p201, p202, p203, p204, p205, p206, p207, p208, p209};
+
+    private ArrayList<Chip> chip1ArrayList;
+    private ArrayList<Chip> chip2ArrayList;
 
     private Line[] lineArray = {line1, line2, line3, line4, line5, line6, line7, line8,
                                 line9, line10, line11, line12, line13, line14, line15,
@@ -205,10 +211,20 @@ public class Board {
                 node.addLinePart(line);
             }
         }
+
+        //Initialise arraylist of chips
+        chip1ArrayList = new ArrayList<Chip>();
+        //Use Collections class to add multiple elements into the list/arraylist
+        Collections.addAll(chip1ArrayList, p101, p102, p103, p104, p105, p106, p107, p108, p109);
+
+        chip2ArrayList = new ArrayList<Chip>();
+        Collections.addAll(chip2ArrayList, p201, p202, p203, p204, p205, p206, p207, p208, p209);
     }
     @FXML
     void onLayoutClick(MouseEvent event) {
-        //somehow initialize a status variable so each ball can know which node has a ball
+        // check for winner again in case game has ended and someone tries to click on the screen
+
+        checkWinner(player1, player2, chip1ArrayList, chip2ArrayList);
 
 //        if(this.currentChip == null){
 //            Glow glow = new Glow();
@@ -246,13 +262,15 @@ public class Board {
                 this.currentChip = null;
             }
         }
-        if(rules.isGameEnd(player1, player2, chipsP1Array, chipsP2Array) != null){
-            System.out.println("The Winner Is : " + rules.isGameEnd(player1, player2, chipsP1Array, chipsP2Array).getPlayerType());
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("WINNER");
-            alert.setContentText("The Winner Is : " + rules.isGameEnd(player1, player2, chipsP1Array, chipsP2Array).getPlayerType());
-            alert.showAndWait();
-        }
+
+        checkWinner(player1, player2, chip1ArrayList, chip2ArrayList);
+//        if(rules.isGameEnd(player1, player2, chip1ArrayList, chip2ArrayList) != null){
+//            System.out.println("The Winner Is : " + rules.isGameEnd(player1, player2, chip1ArrayList, chip2ArrayList).getPlayerType());
+//            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//            alert.setTitle("WINNER");
+//            alert.setContentText("The Winner Is : " + rules.isGameEnd(player1, player2, chip1ArrayList, chip2ArrayList).getPlayerType());
+//            alert.showAndWait();
+//        }
     }
 
 
@@ -286,12 +304,24 @@ public class Board {
             }
             this.currentChip = null;
         }
+        // Winner is checked again for the case where player has no more moves immediately after placing down their LAST chip
+        // (because reserve is reduced after it has moved, not when its clicked)
+        checkWinner(player1, player2, chip1ArrayList, chip2ArrayList);
     }
     @FXML
     void onLineClick(MouseEvent event){
 
     }
 
+    public void checkWinner(Player player1, Player player2, ArrayList<Chip> chip1ArrayList, ArrayList<Chip> chip2ArrayList){
+        if(rules.isGameEnd(player1, player2, chip1ArrayList, chip2ArrayList) != null){
+            System.out.println("The Winner Is : " + rules.isGameEnd(player1, player2, chip1ArrayList, chip2ArrayList).getPlayerType());
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("WINNER");
+            alert.setContentText("The Winner Is : " + rules.isGameEnd(player1, player2, chip1ArrayList, chip2ArrayList).getPlayerType());
+            alert.showAndWait();
+        }
+    }
     public Player getPlayer1() {
         return player1;
     }
