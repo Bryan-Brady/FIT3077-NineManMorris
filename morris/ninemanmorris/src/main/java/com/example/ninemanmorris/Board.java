@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.effect.Glow;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -154,6 +155,7 @@ public class Board {
     private Line[] lineArray = {line1, line2, line3, line4, line5, line6, line7, line8,
                                 line9, line10, line11, line12, line13, line14, line15,
                                 line16};
+    private Chip prevChip;
 
     /** Function that is initialised upon opening the game; initialising the nodes and their neighbours,
      * and the lines (I.e possible mill combinations).
@@ -242,12 +244,34 @@ public class Board {
     @FXML
     void onChipClick(MouseEvent event) {
 
-        Glow glow = new Glow();
-        glow.setLevel(.8);
+//        Glow bright = new Glow();
+//        bright.setLevel(0.8);
+//
+//        Glow noBright = new Glow();
+//        noBright.setLevel(0);
+
         Chip thisChip = ((Chip)event.getSource());
-        thisChip.setEffect(glow);
 
+        // thisChip.setEffect(glow);
 
+        System.out.println("Previous chip: ");
+        System.out.println(prevChip);
+
+        System.out.println("Current chip: ");
+        System.out.println(thisChip);
+
+//        thisChip.setEffect(bright);
+        thisChip.setStrokeWidth(4);
+        thisChip.setStroke(Color.GREEN);
+
+        if(prevChip == null){
+            setPrevChip(thisChip);
+        } else {
+//            getPrevChip().setEffect(noBright);
+            getPrevChip().setStrokeWidth(0.7);
+            getPrevChip().setStroke(Color.BLACK);
+            setPrevChip(thisChip);
+        }
         if(!this.currentPlayer.hasMill()) {
             this.currentChip = thisChip.checkPlayerChip(thisChip, this.currentPlayer);
         }else{
@@ -288,9 +312,10 @@ public class Board {
 
 
         if (this.currentChip != null) {
-            Glow glow = new Glow();
-            glow.setLevel(0);
-            this.currentChip.setEffect(glow);
+//            Glow glow = new Glow();
+//            glow.setLevel(0);
+//            this.currentChip.setEffect(glow);
+
             move.moveAnyWhere(this.currentChip, thisNode, this.currentPlayer);
             move.moveAdjacent(this.currentChip, thisNode, this.currentPlayer);
             rules.setMillStatusBoard(lineArray);
@@ -330,4 +355,11 @@ public class Board {
         return player2;
     }
 
+    public Chip getPrevChip() {
+        return prevChip;
+    }
+
+    public void setPrevChip(Chip prevChip) {
+        this.prevChip = prevChip;
+    }
 }

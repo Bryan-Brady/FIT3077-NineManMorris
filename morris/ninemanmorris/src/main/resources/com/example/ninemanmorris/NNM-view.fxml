@@ -46,23 +46,24 @@
       <Circle fill="DODGERBLUE" layoutX="26.0" layoutY="27.0" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
 
       <Chip fx:id="p101" fill="DODGERBLUE" layoutX="61.0" layoutY="60.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
-      <Chip fx:id="p102" fill="DODGERBLUE" layoutX="61.0" layoutY="139.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
-      <Chip fx:id="p103" fill="DODGERBLUE" layoutX="61.0" layoutY="184.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
-      <Chip fx:id="p104" fill="DODGERBLUE" layoutX="61.0" layoutY="226.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
-      <Chip fx:id="p105" fill="DODGERBLUE" layoutX="61.0" layoutY="266.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
-      <Chip fx:id="p106" fill="DODGERBLUE" layoutX="61.0" layoutY="305.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
-      <Chip fx:id="p107" fill="DODGERBLUE" layoutX="61.0" layoutY="346.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
-      <Chip fx:id="p108" fill="DODGERBLUE" layoutX="61.0" layoutY="374.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
-      <Chip fx:id="p109" fill="DODGERBLUE" layoutX="61.0" layoutY="98.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+      <Chip fx:id="p102" fill="DODGERBLUE" layoutX="61.0" layoutY="90.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+      <Chip fx:id="p103" fill="DODGERBLUE" layoutX="61.0" layoutY="120.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+      <Chip fx:id="p104" fill="DODGERBLUE" layoutX="61.0" layoutY="150.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+      <Chip fx:id="p105" fill="DODGERBLUE" layoutX="61.0" layoutY="180.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+      <Chip fx:id="p106" fill="DODGERBLUE" layoutX="61.0" layoutY="210.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+      <Chip fx:id="p107" fill="DODGERBLUE" layoutX="61.0" layoutY="240.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+      <Chip fx:id="p108" fill="DODGERBLUE" layoutX="61.0" layoutY="270.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+      <Chip fx:id="p109" fill="DODGERBLUE" layoutX="61.0" layoutY="300.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+
       <Chip fx:id="p201" fill="#ff0202" layoutX="509.0" layoutY="60.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
-      <Chip fx:id="p202" fill="#ff0202" layoutX="509.0" layoutY="139.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
-      <Chip fx:id="p203" fill="#ff0202" layoutX="509.0" layoutY="188.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
-      <Chip fx:id="p204" fill="#ff0202" layoutX="509.0" layoutY="226.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
-      <Chip fx:id="p205" fill="#ff0202" layoutX="509.0" layoutY="263.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
-      <Chip fx:id="p206" fill="#ff0202" layoutX="509.0" layoutY="305.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
-      <Chip fx:id="p207" fill="#ff0202" layoutX="509.0" layoutY="344.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
-      <Chip fx:id="p208" fill="#ff0202" layoutX="509.0" layoutY="374.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
-      <Chip fx:id="p209" fill="#ff0202" layoutX="509.0" layoutY="98.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="OUTSIDE" />
+      <Chip fx:id="p202" fill="#ff0202" layoutX="509.0" layoutY="90.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+      <Chip fx:id="p203" fill="#ff0202" layoutX="509.0" layoutY="120.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+      <Chip fx:id="p204" fill="#ff0202" layoutX="509.0" layoutY="150.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+      <Chip fx:id="p205" fill="#ff0202" layoutX="509.0" layoutY="180.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+      <Chip fx:id="p206" fill="#ff0202" layoutX="509.0" layoutY="210.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+      <Chip fx:id="p207" fill="#ff0202" layoutX="509.0" layoutY="240.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+      <Chip fx:id="p208" fill="#ff0202" layoutX="509.0" layoutY="270.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+      <Chip fx:id="p209" fill="#ff0202" layoutX="509.0" layoutY="300.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="OUTSIDE" />
 <!--      <Chip fill="#ff0202" layoutX="61.0" layoutY="500.0" onMouseClicked="#onChipClick" radius="12.0" stroke="BLACK" strokeType="OUTSIDE" />-->
 
 
