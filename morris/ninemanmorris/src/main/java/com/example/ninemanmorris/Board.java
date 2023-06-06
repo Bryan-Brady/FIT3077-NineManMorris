@@ -260,18 +260,20 @@ public class Board {
         System.out.println("Current chip: ");
         System.out.println(thisChip);
 
+        // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+        // Highlighting portion of the code when clicked //
 //        thisChip.setEffect(bright);
-        thisChip.setStrokeWidth(4);
-        thisChip.setStroke(Color.GREEN);
+        highlight(thisChip);
 
         if(prevChip == null){
             setPrevChip(thisChip);
         } else {
 //            getPrevChip().setEffect(noBright);
-            getPrevChip().setStrokeWidth(0.7);
-            getPrevChip().setStroke(Color.BLACK);
+            unHighlight(getPrevChip());
+            unHighlight(getPrevChip());
             setPrevChip(thisChip);
         }
+        // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
         if(!this.currentPlayer.hasMill()) {
             this.currentChip = thisChip.checkPlayerChip(thisChip, this.currentPlayer);
         }else{
