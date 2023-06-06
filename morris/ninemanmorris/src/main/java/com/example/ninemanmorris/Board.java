@@ -362,4 +362,14 @@ public class Board {
     public void setPrevChip(Chip prevChip) {
         this.prevChip = prevChip;
     }
+
+    public void highlight(Chip thisChip){
+        thisChip.setStrokeWidth(4);
+        thisChip.setStroke(Color.GREEN);
+    }
+
+    public void unHighlight(Chip thisChip) {
+        thisChip.setStrokeWidth(0.7);
+        thisChip.setStroke(Color.BLACK);
+    }
 }
