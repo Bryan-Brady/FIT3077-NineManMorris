@@ -20,7 +20,10 @@ public class Board {
     private Player currentPlayer = player1;
 
     private Rules rules = new Rules();
-    private Move move = Move.getInstance();
+    private Move move = new Move();
+    @FXML
+    private Text tutorialText;
+    private Tutorial tutorial = new Tutorial();
 
 
     //Player 1 //
@@ -130,10 +133,13 @@ public class Board {
     private Node node23 = new Node();
     @FXML
     private Node node24 = new Node();
+
     @FXML
     private Text playerTurnText= new Text();
     @FXML
     private Text playerActionText = new Text();
+
+
 
     private Line line1 = new Line();
     private Line line2 = new Line();
@@ -157,6 +163,8 @@ public class Board {
 
     private ArrayList<Chip> chip1ArrayList;
     private ArrayList<Chip> chip2ArrayList;
+
+    private ArrayList<Node> nodeArrayList;
 
     private Line[] lineArray = {line1, line2, line3, line4, line5, line6, line7, line8,
                                 line9, line10, line11, line12, line13, line14, line15,
@@ -228,19 +236,24 @@ public class Board {
         chip2ArrayList = new ArrayList<Chip>();
         Collections.addAll(chip2ArrayList, p201, p202, p203, p204, p205, p206, p207, p208, p209);
 
+
         //Originally set the text to player 1 as player 1 moves first
         setPlayerTurnText("Player 1");
+
+        nodeArrayList = new ArrayList<Node>();
+        Collections.addAll(nodeArrayList, node1, node2, node3, node4, node5, node6, node7, node8, node9, node10, node11, node12, node13, node14, node15, node16, node17, node18, node19, node20, node21, node22, node23, node24);
+
+        // Injecting depedencies
+        move.injectTutorial(tutorial);
+        tutorial.injectText(tutorialText);
+
     }
     @FXML
     void onLayoutClick(MouseEvent event) {
         // check for winner again in case game has ended and someone tries to click on the screen
+
         checkWinner(player1, player2, chip1ArrayList, chip2ArrayList);
 
-//        if(this.currentChip == null){
-//            Glow glow = new Glow();
-//            glow.setLevel(0);
-//            this.currentChip.setEffect(glow);
-//        }
     }
 
     /** Function that is executed if any chip is clicked on the board. Very important
@@ -252,39 +265,18 @@ public class Board {
     @FXML
     void onChipClick(MouseEvent event) {
 
-//        Glow bright = new Glow();
-//        bright.setLevel(0.8);
-//
-//        Glow noBright = new Glow();
-//        noBright.setLevel(0);
-
         Chip thisChip = ((Chip)event.getSource());
-        // Outputs the layout coordinates, uncomment below to see
-//        System.out.println("###########");
-//        System.out.println(thisChip.getLayoutX());
-//        System.out.println(thisChip.getLayoutY());
-//        System.out.println("###########");
-        // thisChip.setEffect(glow);
 
-        System.out.println("Previous chip: ");
-        System.out.println(prevChip);
+        highlight(thisChip, null);
 
-        System.out.println("Current chip: ");
-        System.out.println(thisChip);
-
-        // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
-        // Highlighting portion of the code when clicked //
-//        thisChip.setEffect(bright);
-        highlight(thisChip);
 
         if(prevChip == null){
-            setPrevChip(thisChip);
-        } else {
-//            getPrevChip().setEffect(noBright);
-            unHighlight(getPrevChip());
-            unHighlight(getPrevChip());
-            setPrevChip(thisChip);
+            ;
         }
+        unHighlight(getPrevChip(), null);
+        unHighlight(getPrevChip(), null);
+        this.prevChip = thisChip;
+
         // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
         if(!this.currentPlayer.hasMill()) {
             this.currentChip = thisChip.checkPlayerChip(thisChip, this.currentPlayer);
@@ -323,13 +315,7 @@ public class Board {
         }
 
         checkWinner(player1, player2, chip1ArrayList, chip2ArrayList);
-//        if(rules.isGameEnd(player1, player2, chip1ArrayList, chip2ArrayList) != null){
-//            System.out.println("The Winner Is : " + rules.isGameEnd(player1, player2, chip1ArrayList, chip2ArrayList).getPlayerType());
-//            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//            alert.setTitle("WINNER");
-//            alert.setContentText("The Winner Is : " + rules.isGameEnd(player1, player2, chip1ArrayList, chip2ArrayList).getPlayerType());
-//            alert.showAndWait();
-//        }
+
     }
 
 
@@ -347,16 +333,13 @@ public class Board {
 
 
         if (this.currentChip != null) {
-//            Glow glow = new Glow();
-//            glow.setLevel(0);
-//            this.currentChip.setEffect(glow);
-
+            // Where move check is happening
             move.moveAnyWhere(this.currentChip, thisNode, this.currentPlayer);
             move.moveAdjacent(this.currentChip, thisNode, this.currentPlayer);
             rules.setMillStatusBoard(lineArray);
             // Check if player have three in a row
             if(!this.currentPlayer.hasMill()) {
-                // Go in this if, only if player don't have three in a row
+                // Go in this if player don't have three in a row
                 // Changing player turn
                 if(this.currentPlayer.isPlayerMoved()) {
                     this.currentPlayer = this.currentPlayer.checkPlayerTurn(currentPlayer);
@@ -399,6 +382,46 @@ public class Board {
             alert.showAndWait();
         }
     }
+
+    public void tutorialModeOn(){
+        this.tutorial.setTutorialOn(true);
+        this.tutorial.setTutorialText("PLACE YOUR DAMN CHIPS HERE");
+        System.out.println("TUTORIAL ON");
+
+        // Make exit button here as well
+    }
+    public void hintOn(){
+        if(!tutorial.isTutorialOn()) {
+            // Can only turn hints on if tutorial is off
+            this.tutorial.setHintOn(true);
+        }
+        System.out.println("HINT ON");
+    }
+
+
+    private void highlight(Chip thisChip, Node thisNode ){
+        if(thisChip != null) {
+            thisChip.setStrokeWidth(4);
+            thisChip.setStroke(Color.GREEN);
+        }
+
+        if(thisNode != null){
+            thisNode.setStrokeWidth(4);
+            thisChip.setStroke(Color.GREEN);
+        }
+    }
+
+    private void unHighlight(Chip thisChip, Node thisNode ){
+        if(thisChip != null) {
+            thisChip.setStrokeWidth(0.7);
+            thisChip.setStroke(Color.BLACK);
+        }
+
+        if(thisNode != null){
+            thisNode.setStrokeWidth(4);
+            thisChip.setStroke(Color.GREEN);
+        }
+    }
     public Player getPlayer1() {
         return player1;
     }
@@ -410,6 +433,7 @@ public class Board {
     public Chip getPrevChip() {
         return prevChip;
     }
+
 
     private void setPlayerTurnText(String playerTurnText) {
         this.playerTurnText.setText(playerTurnText);

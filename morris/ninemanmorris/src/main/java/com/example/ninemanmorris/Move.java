@@ -1,21 +1,14 @@
 package com.example.ninemanmorris;
 
 public class Move {
-    private static Move move_instance = null;
     private static Rules rules = new Rules();
+    private Tutorial tutorial = null;
 
-    public String s;
-    private Move(){
-        s = "This is a move singleton class";
+    public Move(){
+
     }
 
-    // Create Singleton class of move
-    public static synchronized Move getInstance(){
-        if(move_instance == null){
-            move_instance = new Move();
-        }
-        return move_instance;
-    }
+
 
     /** Function to set the position of the currently clicked chip to the clicked node of the current player.
 
@@ -44,7 +37,7 @@ public class Move {
         for(Line line : thisNode.getLinePart()) {
 //            System.out.println(rules.isMillMade(line));
             if (rules.isMillMade(line) && !currentPlayer.hasMill()) {
-                System.out.println("IN IF STATEMENT MILL MOVE");
+//                System.out.println("IN IF STATEMENT MILL MOVE");
 //                System.out.println("IT IS THREE IN A ROW");
                 currentPlayer.setMillMade(true);
             }
@@ -78,7 +71,7 @@ public class Move {
         }
 
         if(rules.isRemainingThreeMoveCondition(currentChip, currentPlayer)){
-            System.out.println("Three piece remain");
+//            System.out.println("Three piece remain");
             this.setPos(currentChip, thisNode, currentPlayer);
         }
     }
@@ -93,7 +86,7 @@ public class Move {
 
      */
     public void moveKillChip(Chip targetChip, Player currentPlayer){
-        System.out.println(rules.chipIsPartOfMill(targetChip));
+//        System.out.println(rules.chipIsPartOfMill(targetChip));
         if(!rules.chipIsPartOfMill(targetChip)) {
             if(targetChip.getChipLocation() != null){
                 // Remove connection from current chip location to the chip that just moved
@@ -123,9 +116,13 @@ public class Move {
     public void moveAdjacent(Chip currentChip, Node thisNode, Player currentPlayer){
 
         if(rules.isMoveAdjacent(currentChip, thisNode, currentPlayer)){
-            System.out.println("Adjacent Movement");
+//            System.out.println("Adjacent Movement");
             this.setPos(currentChip, thisNode, currentPlayer);
         }
+    }
+
+    public void injectTutorial(Tutorial tutorial){
+        this.tutorial = tutorial;
     }
 
 }

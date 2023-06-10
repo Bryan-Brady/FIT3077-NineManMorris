@@ -9,6 +9,7 @@
 <?import com.example.ninemanmorris.Node?>
 <?import com.example.ninemanmorris.Chip?>
 
+<?import javafx.scene.control.Button?>
 <AnchorPane fx:id="layout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onLayoutClick" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ninemanmorris.Board">
    <children>
       <Node fx:id="node1" fill="#d3cbcb" layoutX="182.0" layoutY="79.0" onMouseClicked="#onNodeClick" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
@@ -105,13 +106,20 @@
       <Line endX="-19.0" endY="21.0" layoutX="314.0" layoutY="231.0" startX="-19.0" startY="-5.0" />
       <Line endX="-19.0" endY="11.0" layoutX="314.0" layoutY="275.0" startX="-19.0" startY="-9.0" />
 
-      <Text layoutX="259.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Turn:" />
-      <Text fx:id="playerTurnText" layoutX="297.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player" />
-      <Text layoutX="249.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Action:" />
-      <Text fx:id="playerActionText" layoutX="297.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Move" />
+
+      <Text layoutX="129.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Turn:" />
+      <Text fx:id="playerTurnText" layoutX="167.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player" />
+      <Text layoutX="129.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Action:" />
+      <Text fx:id="playerActionText" layoutX="167.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Move" />
 
       <Text layoutX="30" layoutY="480" strokeType="OUTSIDE" strokeWidth="0.0" text="Dead Chips" />
       <Text layoutX="478" layoutY="480" strokeType="OUTSIDE" strokeWidth="0.0" text="Dead Chips" />
+
+      <Button layoutX="330.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#tutorialModeOn" text="Tutorial" />
+      <Button layoutX="400.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#hintOn" text="Hint" />
+
+      <Text fx:id="tutorialText" layoutX="280.0" layoutY="350.0" strokeType="OUTSIDE" strokeWidth="300.0" text="HELLO" wrappingWidth="200.7421875" textAlignment="JUSTIFY"/>
+
       <StackPane layoutX="239.0" layoutY="12.0" prefHeight="48.0" prefWidth="129.0" />
    </children>
 </AnchorPane>

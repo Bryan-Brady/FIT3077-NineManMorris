@@ -107,22 +107,22 @@ public class Rules {
 //        System.out.println("P1 array: ");
 //        System.out.println(chipsP1Array);
 
-        System.out.println("P1 arraylist: ");
-        System.out.println(chipsP1ArrayList);
+//        System.out.println("P1 arraylist: ");
+//        System.out.println(chipsP1ArrayList);
 
 //        System.out.println("P2 array: ");
 //        System.out.println(chipsP2Array);
-
-        System.out.println("P2 arraylist: ");
-        System.out.println(chipsP2ArrayList);
+//
+//        System.out.println("P2 arraylist: ");
+//        System.out.println(chipsP2ArrayList);
 
         // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
         //Checks for validity of adjacent moves for:
         // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
-
-        System.out.println("~~~~~~~~~~~~~~~~~~~~");
-        System.out.println("Player 1");
-        System.out.println("~~~~~~~~~~~~~~~~~~~~");
+//
+//        System.out.println("~~~~~~~~~~~~~~~~~~~~");
+//        System.out.println("Player 1");
+//        System.out.println("~~~~~~~~~~~~~~~~~~~~");
 
         for(Chip chip : chipsP1ArrayList){
 //            System.out.println("P1: ");
@@ -141,26 +141,26 @@ public class Rules {
 
                     if (node.getChip() == null) {
                         // Any instance of no chip in neighbouring nodes, still have legal move.
-                        System.out.println("LEGAL MOVE AVAILABLE ON NODE: ");
-                        System.out.println(node.getId());
-                        System.out.println("NEIGHBOUR OF (parent): ");
-                        System.out.println(chip.getChipLocation().getId());
+//                        System.out.println("LEGAL MOVE AVAILABLE ON NODE: ");
+//                        System.out.println(node.getId());
+//                        System.out.println("NEIGHBOUR OF (parent): ");
+//                        System.out.println(chip.getChipLocation().getId());
 
                         stillCanMoveAdjacent1 = true;
                     }
-                    else {
-                        System.out.println("Invalid adjacent movement");
-                        System.out.println(node.getId());
-                        System.out.println(chip.getChipLocation().getId());
-                    }
+//                    else {
+//                        System.out.println("Invalid adjacent movement");
+//                        System.out.println(node.getId());
+//                        System.out.println(chip.getChipLocation().getId());
+//                    }
                 }
             }
         }
 
         // the same logic applies for player 2
-        System.out.println("~~~~~~~~~~~~~~~~~~~~");
-        System.out.println("Player 2");
-        System.out.println("~~~~~~~~~~~~~~~~~~~~");
+//        System.out.println("~~~~~~~~~~~~~~~~~~~~");
+//        System.out.println("Player 2");
+//        System.out.println("~~~~~~~~~~~~~~~~~~~~");
         for(Chip chip : chipsP2ArrayList){
 //            System.out.println("P2: ");
 //            System.out.println(chip);
@@ -168,22 +168,22 @@ public class Rules {
                 stillCanMoveRemainingThree2 = this.isRemainingThreeMoveCondition(chip, player2);
                 for (Node node : chip.getChipLocation().getNodeNeighbours()) {
                     if (node.getChip() == null) {
-                        System.out.println("LEGAL MOVE AVAILABLE ON NODE: ");
-                        System.out.println(node.getId());
-                        System.out.println("NEIGHBOUR OF (parent): ");
-                        System.out.println(chip.getChipLocation().getId());
+//                        System.out.println("LEGAL MOVE AVAILABLE ON NODE: ");
+//                        System.out.println(node.getId());
+//                        System.out.println("NEIGHBOUR OF (parent): ");
+//                        System.out.println(chip.getChipLocation().getId());
                         stillCanMoveAdjacent2 = true;
 
                     }
-                    else {
-                        System.out.println("Invalid adjacent movement");
-                        System.out.println(node.getId());
-                        System.out.println(chip.getChipLocation().getId());
-                    }
+//                    else {
+//                        System.out.println("Invalid adjacent movement");
+//                        System.out.println(node.getId());
+//                        System.out.println(chip.getChipLocation().getId());
+//                    }
                 }
             }
         }
-        System.out.println("~~~~~~~~~~~~~~~~~~~~");
+//        System.out.println("~~~~~~~~~~~~~~~~~~~~");
         // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
         //Condition of losing:
