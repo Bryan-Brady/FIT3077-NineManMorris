@@ -64,4 +64,8 @@ public class Chip extends Circle {
     public void setPartOfAMill(boolean partOfAMill) {
         isPartOfAMill = partOfAMill;
     }
+
+    public boolean isPartOfAMill() {
+        return isPartOfAMill;
+    }
 }

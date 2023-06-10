@@ -69,30 +69,30 @@
 
 
 <!--      <Line endX="115" endY="0" layoutX="300" layoutY="100" onMouseClicked="#onLineClick" startX="-106" startY="0" />-->
-      <Line endX="-19.0" endY="50.0" layoutX="201.0" layoutY="127.0" onMouseClicked="#onLineClick" startX="-19.0" startY="-39.0" />
-      <Line endX="22.0" endY="44.0" layoutX="266.0" layoutY="35.0" onMouseClicked="#onLineClick" startX="-77.0" startY="44.0" />
-      <Line endX="39.0" endY="44.0" layoutX="357.0" layoutY="35.0"  onMouseClicked="#onLineClick" startX="-55.0" startY="44.0" />
-      <Line endX="-19.0" endY="26.0" layoutX="201.0" layoutY="260.0" onMouseClicked="#onLineClick"  startX="-19.0" startY="-69.0" />
-      <Line endX="22.0" endY="44.0" layoutX="266.0" layoutY="250.0" onMouseClicked="#onLineClick"  startX="-77.0" startY="44.0" />
-      <Line endX="39.0" endY="44.0" layoutX="357.0" layoutY="249.0" onMouseClicked="#onLineClick"  startX="-55.0" startY="44.0" />
-      <Line endX="-19.0" endY="64.0" layoutX="422.0" layoutY="113.0"  onMouseClicked="#onLineClick" startX="-19.0" startY="-27.0" />
-      <Line endX="-19.0" endY="69.0" layoutX="422.0" layoutY="217.0"  onMouseClicked="#onLineClick" startX="-19.0" startY="-27.0" />
-      <Line endX="5.0" endY="43.0" layoutX="355.0" layoutY="70.0" onMouseClicked="#onLineClick"  startX="-53.0" startY="43.0" />
-      <Line endX="7.0" endY="42.0" layoutX="281.0" layoutY="71.0" onMouseClicked="#onLineClick"  startX="-52.0" startY="42.0" />
-      <Line endX="7.0" endY="42.0" layoutX="281.0" layoutY="217.0" onMouseClicked="#onLineClick"  startX="-52.0" startY="42.0" />
-      <Line endX="5.0" endY="43.0" layoutX="355.0" layoutY="216.0" onMouseClicked="#onLineClick"  startX="-53.0" startY="43.0" />
-      <Line endX="-19.0" endY="51.0" layoutX="241.0" layoutY="126.0" onMouseClicked="#onLineClick"  startX="-19.0" startY="-6.0" />
-      <Line endX="-19.0" endY="55.0" layoutX="241.0" layoutY="197.0" onMouseClicked="#onLineClick"  startX="-19.0" startY="-6.0" />
-      <Line endX="-19.0" endY="49.0" layoutX="386.0" layoutY="203.0" onMouseClicked="#onLineClick"  startX="-19.0" startY="-12.0" />
-      <Line endX="-19.0" endY="54.0" layoutX="386.0" layoutY="123.0"  onMouseClicked="#onLineClick" startX="-19.0" startY="-3.0" />
-      <Line endX="-11.0" endY="43.0" layoutX="226.0" layoutY="141.0" onMouseClicked="#onLineClick"  startX="-37.0" startY="43.0" />
-      <Line endX="-14.0" endY="42.0" layoutX="268.0" layoutY="142.0"  onMouseClicked="#onLineClick" startX="-39.0" startY="42.0" />
-      <Line endX="-18.0" endY="42.0" layoutX="376.0" layoutY="143.0"  onMouseClicked="#onLineClick" startX="-39.0" startY="42.0" />
-      <Line endX="-18.0" endY="43.0" layoutX="414.0" layoutY="141.0"  onMouseClicked="#onLineClick" startX="-42.0" startY="43.0" />
-      <Line endX="-5.0" endY="48.0" layoutX="293.0" layoutY="98.0" onMouseClicked="#onLineClick"  startX="-25.0" startY="48.0" />
-      <Line endX="-5.0" endY="49.0" layoutX="328.0" layoutY="97.0" onMouseClicked="#onLineClick"  startX="-26.0" startY="49.0" />
-      <Line endX="-6.0" endY="49.0" layoutX="329.0" layoutY="170.0" onMouseClicked="#onLineClick"  startX="-27.0" startY="49.0" />
-      <Line endX="-8.0" endY="49.0" layoutX="296.0" layoutY="170.0"  onMouseClicked="#onLineClick" startX="-28.0" startY="49.0" />
+      <Line endX="-19.0" endY="50.0" layoutX="201.0" layoutY="127.0"  startX="-19.0" startY="-39.0" />
+      <Line endX="22.0" endY="44.0" layoutX="266.0" layoutY="35.0" startX="-77.0" startY="44.0" />
+      <Line endX="39.0" endY="44.0" layoutX="357.0" layoutY="35.0"   startX="-55.0" startY="44.0" />
+      <Line endX="-19.0" endY="26.0" layoutX="201.0" layoutY="260.0"   startX="-19.0" startY="-69.0" />
+      <Line endX="22.0" endY="44.0" layoutX="266.0" layoutY="250.0"   startX="-77.0" startY="44.0" />
+      <Line endX="39.0" endY="44.0" layoutX="357.0" layoutY="249.0"  startX="-55.0" startY="44.0" />
+      <Line endX="-19.0" endY="64.0" layoutX="422.0" layoutY="113.0"   startX="-19.0" startY="-27.0" />
+      <Line endX="-19.0" endY="69.0" layoutX="422.0" layoutY="217.0"   startX="-19.0" startY="-27.0" />
+      <Line endX="5.0" endY="43.0" layoutX="355.0" layoutY="70.0"   startX="-53.0" startY="43.0" />
+      <Line endX="7.0" endY="42.0" layoutX="281.0" layoutY="71.0"   startX="-52.0" startY="42.0" />
+      <Line endX="7.0" endY="42.0" layoutX="281.0" layoutY="217.0"  startX="-52.0" startY="42.0" />
+      <Line endX="5.0" endY="43.0" layoutX="355.0" layoutY="216.0"   startX="-53.0" startY="43.0" />
+      <Line endX="-19.0" endY="51.0" layoutX="241.0" layoutY="126.0"   startX="-19.0" startY="-6.0" />
+      <Line endX="-19.0" endY="55.0" layoutX="241.0" layoutY="197.0"   startX="-19.0" startY="-6.0" />
+      <Line endX="-19.0" endY="49.0" layoutX="386.0" layoutY="203.0"   startX="-19.0" startY="-12.0" />
+      <Line endX="-19.0" endY="54.0" layoutX="386.0" layoutY="123.0"   startX="-19.0" startY="-3.0" />
+      <Line endX="-11.0" endY="43.0" layoutX="226.0" layoutY="141.0"  startX="-37.0" startY="43.0" />
+      <Line endX="-14.0" endY="42.0" layoutX="268.0" layoutY="142.0"  startX="-39.0" startY="42.0" />
+      <Line endX="-18.0" endY="42.0" layoutX="376.0" layoutY="143.0"  startX="-39.0" startY="42.0" />
+      <Line endX="-18.0" endY="43.0" layoutX="414.0" layoutY="141.0"  startX="-42.0" startY="43.0" />
+      <Line endX="-5.0" endY="48.0" layoutX="293.0" layoutY="98.0"  startX="-25.0" startY="48.0" />
+      <Line endX="-5.0" endY="49.0" layoutX="328.0" layoutY="97.0"   startX="-26.0" startY="49.0" />
+      <Line endX="-6.0" endY="49.0" layoutX="329.0" layoutY="170.0"   startX="-27.0" startY="49.0" />
+      <Line endX="-8.0" endY="49.0" layoutX="296.0" layoutY="170.0"   startX="-28.0" startY="49.0" />
       <Line endX="-19.0" endY="30.0" layoutX="280.0" layoutY="147.0" startX="-19.0" startY="6.0" />
       <Line endX="-18.0" endY="29.0" layoutX="279.0" layoutY="183.0" startX="-18.0" startY="8.0" />
       <Line endX="-18.0" endY="29.0" layoutX="348.0" layoutY="183.0" startX="-18.0" startY="8.0" />
@@ -110,15 +110,15 @@
       <Text layoutX="129.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Turn:" />
       <Text fx:id="playerTurnText" layoutX="167.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player" />
       <Text layoutX="129.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Action:" />
-      <Text fx:id="playerActionText" layoutX="167.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Move" />
+      <Text fx:id="playerActionText" layoutX="167.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" " />
 
       <Text layoutX="30" layoutY="480" strokeType="OUTSIDE" strokeWidth="0.0" text="Dead Chips" />
       <Text layoutX="478" layoutY="480" strokeType="OUTSIDE" strokeWidth="0.0" text="Dead Chips" />
+      <Button layoutX="190.0" layoutY="320.0" mnemonicParsing="false" onMouseClicked="#tutorialModeOff" text="Tutorial Off" />
+      <Button layoutX="275.0" layoutY="320.0" mnemonicParsing="false" onMouseClicked="#tutorialModeOn" text="Tutorial On" />
+      <Button layoutX="360.0" layoutY="320.0" mnemonicParsing="false" onMouseClicked="#hintOn" text="Hint" />
 
-      <Button layoutX="330.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#tutorialModeOn" text="Tutorial" />
-      <Button layoutX="400.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#hintOn" text="Hint" />
-
-      <Text fx:id="tutorialText" layoutX="280.0" layoutY="350.0" strokeType="OUTSIDE" strokeWidth="300.0" text="HELLO" wrappingWidth="200.7421875" textAlignment="JUSTIFY"/>
+<!--      <Text fx:id="tutorialText" layoutX="280.0" layoutY="350.0" strokeType="OUTSIDE" strokeWidth="300.0" text="HELLO" wrappingWidth="200.7421875" textAlignment="JUSTIFY"/>-->
 
       <StackPane layoutX="239.0" layoutY="12.0" prefHeight="48.0" prefWidth="129.0" />
    </children>

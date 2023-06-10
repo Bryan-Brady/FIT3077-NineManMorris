@@ -1,5 +1,7 @@
 package com.example.ninemanmorris;
 
+import java.util.ArrayList;
+
 public class Player {
 
 
@@ -12,7 +14,7 @@ public class Player {
     public Player(PlayerType playerType){
         this.playerType = playerType;
     }
-
+    private ArrayList<Chip> chips;
     public PlayerType getPlayerType(){
         return this.playerType;
     }
@@ -22,23 +24,24 @@ public class Player {
     * Input  : currentPlayer : The current player
     *          player1/2 : Are static objects
     * Return : currentPlayer, the player that can make their turn */
+    public Player switchPlayerTurn(Player currentPlayer){
+        currentPlayer.setPlayerMoved(false);
+        return checkPlayerTurn(currentPlayer);
+    }
+
     public Player checkPlayerTurn(Player currentPlayer){
         Board board = new Board();
-        Player thePlayer = currentPlayer;
-        // Set the current player to end their turn
-        thePlayer.setPlayerMoved(false);
-        if (thePlayer.getPlayerType() == PlayerType.PLAYER1) {
+        if (currentPlayer.getPlayerType() == PlayerType.PLAYER1) {
             // If current player is player 1 then change to player 2
-            thePlayer = board.getPlayer2();
+            currentPlayer = board.getPlayer2();
 //            board.setPlayerTurnText("Player 2");
         } else {
-            thePlayer = board.getPlayer1();
+            currentPlayer = board.getPlayer1();
 //            board.setPlayerTurnText("Player 1");
         }
 
-        return thePlayer;
+        return currentPlayer;
     }
-
     public int getChipsReserve() {
         return chipsReserve;
     }
@@ -84,5 +87,13 @@ public class Player {
 
     public void setMillMade(boolean millMade) {
         this.millMade = millMade;
+    }
+
+    public ArrayList<Chip> getChips() {
+        return chips;
+    }
+
+    public void setChips(ArrayList<Chip> chips) {
+        this.chips = chips;
     }
 }

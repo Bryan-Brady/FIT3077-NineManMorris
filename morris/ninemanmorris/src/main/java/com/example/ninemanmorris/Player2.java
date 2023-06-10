@@ -13,4 +13,5 @@ public class Player2 extends Player{
 
         return player2_instance;
     }
+
 }

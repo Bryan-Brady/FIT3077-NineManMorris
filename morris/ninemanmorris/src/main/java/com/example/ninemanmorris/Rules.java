@@ -50,9 +50,6 @@ public class Rules {
             String firstChipId = chipsToBeCompared.get(0).getId();
             String secondChipId = chipsToBeCompared.get(1).getId();
             String thirdChipId = chipsToBeCompared.get(2).getId();
-            System.out.println(firstChipId);
-            System.out.println(secondChipId);
-            System.out.println(thirdChipId);
             if(firstChipId.charAt(1) == secondChipId.charAt(1) && firstChipId.charAt(1) == thirdChipId.charAt(1)){
                 millCreated = true;
                 line.setAMill(true);
@@ -129,7 +126,7 @@ public class Rules {
 //            System.out.println(chip);
             // Quick check to see if chip not null, is set onto a location, and is alive (is alive is here to resolve strange bug)
             if(chip != null && chip.getChipLocation() != null && (chip.getChipStatus() == ChipStatus.ALIVE)) {
-                stillCanMoveRemainingThree1 = this.isRemainingThreeMoveCondition(chip, player1);
+                stillCanMoveRemainingThree1 = this.isRemainingThreeMoveCondition(player1);
                 for (Node node : chip.getChipLocation().getNodeNeighbours()) {
                     // The only instance where any player lose because of no more legal moves, is if ALL the neighboring nodes
                     // have a chip in it. (parent node also needs to be alive)
@@ -165,7 +162,7 @@ public class Rules {
 //            System.out.println("P2: ");
 //            System.out.println(chip);
             if(chip != null && chip.getChipLocation() != null && (chip.getChipStatus() == ChipStatus.ALIVE)) {
-                stillCanMoveRemainingThree2 = this.isRemainingThreeMoveCondition(chip, player2);
+                stillCanMoveRemainingThree2 = this.isRemainingThreeMoveCondition(player2);
                 for (Node node : chip.getChipLocation().getNodeNeighbours()) {
                     if (node.getChip() == null) {
 //                        System.out.println("LEGAL MOVE AVAILABLE ON NODE: ");
@@ -224,15 +221,15 @@ public class Rules {
         return null;
     }
 
-    public boolean isInitialMoveCondition(Chip currentChip, Player currentPlayer){
-        return (currentPlayer.getChipsReserve() <= 9 && currentPlayer.getChipsReserve() != 0 && currentChip.getChipStatus() == ChipStatus.RESERVE && !currentPlayer.isPlayerMoved());
+    public boolean isInitialMoveCondition( Player currentPlayer){
+        return (currentPlayer.getChipsReserve() <= 9 && currentPlayer.getChipsReserve() != 0  && !currentPlayer.isPlayerMoved());
     }
 
-    public boolean isRemainingThreeMoveCondition(Chip currentChip, Player currentPlayer){
-        return (currentPlayer.getChipsAlive() <= 3 && currentPlayer.getChipsReserve() == 0 && currentChip.getChipStatus() == ChipStatus.ALIVE && !currentPlayer.isPlayerMoved());
+    public boolean isRemainingThreeMoveCondition( Player currentPlayer){
+        return (currentPlayer.getChipsAlive() <= 3 && currentPlayer.getChipsReserve() == 0  && !currentPlayer.isPlayerMoved());
     }
-    public boolean isMoveAdjacent(Chip currentChip, Node thisNode,  Player currentPlayer){
-        return (currentPlayer.getChipsReserve() == 0 && currentChip.getChipStatus() == ChipStatus.ALIVE && !currentPlayer.isPlayerMoved() && Arrays.asList(thisNode.getNodeNeighbours()).contains(currentChip.getChipLocation()));
+    public boolean isMoveAdjacent( Player currentPlayer){
+        return (currentPlayer.getChipsReserve() == 0  && !currentPlayer.isPlayerMoved());
     }
 
 }

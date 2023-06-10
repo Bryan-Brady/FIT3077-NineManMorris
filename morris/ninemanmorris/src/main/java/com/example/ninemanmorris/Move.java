@@ -1,9 +1,10 @@
 package com.example.ninemanmorris;
 
+import java.util.Arrays;
+
 public class Move {
     private static Rules rules = new Rules();
-    private Tutorial tutorial = null;
-
+    private static Tutorial tutorial;
     public Move(){
 
     }
@@ -21,6 +22,16 @@ public class Move {
 
      */
     private void setPos(Chip currentChip,Node thisNode, Player currentPlayer){
+        if(this.tutorial.isChipsHighlighted()){
+            // Unhighlight all the chips
+            tutorial.unhighlightAllChips();
+        }
+
+        if(this.tutorial.isNodesHighlighted()){
+            // Unhighlight all the nodes
+            System.out.println("NODES HIGHLIGHTESd");
+            tutorial.unhighlightAllNodes();
+        }
 
         // Setting the chips on the board position
         currentChip.setLayoutX(thisNode.getLayoutX());
@@ -40,12 +51,26 @@ public class Move {
 //                System.out.println("IN IF STATEMENT MILL MOVE");
 //                System.out.println("IT IS THREE IN A ROW");
                 currentPlayer.setMillMade(true);
+                // Display message when mill is made
+                if(tutorial.isTutorialOn()) {
+                    System.out.println(currentPlayer.hasMill());
+                    tutorial.displayMessage(currentPlayer);
+//                    tutorial.highlightKillableChips(currentPlayer);
+                }
             }
         }
         // If not here, then if you click chip and click a node, then it is going to be counted as a valid movement
-        if(!currentPlayer.isPlayerMoved())currentPlayer.setPlayerMoved(true);
-
-
+        if(!currentPlayer.isPlayerMoved()){
+            currentPlayer.setPlayerMoved(true);
+        }
+        Player nextPlayer = currentPlayer.checkPlayerTurn(currentPlayer);
+        if(tutorial.isTutorialOn() && !currentPlayer.hasMill()) {
+            tutorial.displayMessage(nextPlayer);
+        }
+        if(this.tutorial.isHintOn()){
+            this.tutorial.setPlayerActionText(" ");
+            this.tutorial.setHintOn(false);
+        }
     }
 
     /** Function that allows the chip to be able to move anywhere when clicked.
@@ -59,7 +84,7 @@ public class Move {
 
      */
     public void moveAnyWhere(Chip currentChip,Node thisNode, Player currentPlayer){
-        if(rules.isInitialMoveCondition(currentChip, currentPlayer)){
+        if(rules.isInitialMoveCondition( currentPlayer)&& currentChip.getChipStatus() == ChipStatus.RESERVE){
             currentPlayer.addChipsAlive();
             // Can move anywhere
             this.setPos(currentChip, thisNode, currentPlayer);
@@ -70,7 +95,7 @@ public class Move {
 
         }
 
-        if(rules.isRemainingThreeMoveCondition(currentChip, currentPlayer)){
+        if(rules.isRemainingThreeMoveCondition(currentPlayer) && currentChip.getChipStatus() == ChipStatus.ALIVE){
 //            System.out.println("Three piece remain");
             this.setPos(currentChip, thisNode, currentPlayer);
         }
@@ -104,18 +129,35 @@ public class Move {
             targetChip.setChipStatus(ChipStatus.DEAD);
 
             // Reduces the enemies' chips
-            Player enemyPlayer = currentPlayer.checkPlayerTurn(currentPlayer);
+            Player enemyPlayer = currentPlayer.switchPlayerTurn(currentPlayer);
             enemyPlayer.reduceChipsAlive();
             currentPlayer.setPlayerMoved(true);
 
             // Setting back to not three in a row for player
             currentPlayer.setMillMade(false);
+            System.out.println(currentPlayer.hasMill());
+            Player nextPlayer = currentPlayer.checkPlayerTurn(currentPlayer);
+            if(tutorial.isTutorialOn()) tutorial.displayMessage(nextPlayer);
+            if(this.tutorial.isHintOn()){
+                this.tutorial.setPlayerActionText(" ");
+                this.tutorial.setHintOn(false);
+            }
+            if(this.tutorial.isChipsHighlighted()){
+                // Unhighlight all the chips
+                tutorial.unhighlightAllChips();
+            }
+
+            if(this.tutorial.isNodesHighlighted()){
+                // Unhighlight all the nodes
+                System.out.println("NODES HIGHLIGHTESd");
+                tutorial.unhighlightAllNodes();
+            }
         }
     }
 
     public void moveAdjacent(Chip currentChip, Node thisNode, Player currentPlayer){
 
-        if(rules.isMoveAdjacent(currentChip, thisNode, currentPlayer)){
+        if(rules.isMoveAdjacent(currentPlayer)&& currentChip.getChipStatus() == ChipStatus.ALIVE && Arrays.asList(thisNode.getNodeNeighbours()).contains(currentChip.getChipLocation())){
 //            System.out.println("Adjacent Movement");
             this.setPos(currentChip, thisNode, currentPlayer);
         }
@@ -124,5 +166,7 @@ public class Move {
     public void injectTutorial(Tutorial tutorial){
         this.tutorial = tutorial;
     }
+
+
 
 }

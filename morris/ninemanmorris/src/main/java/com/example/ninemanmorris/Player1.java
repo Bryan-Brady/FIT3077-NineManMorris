@@ -1,5 +1,7 @@
 package com.example.ninemanmorris;
 
+import java.util.ArrayList;
+
 public class Player1 extends Player{
     private Player1() {
         super(PlayerType.PLAYER1);
@@ -13,4 +15,5 @@ public class Player1 extends Player{
 
         return player1_instance;
     }
+
 }

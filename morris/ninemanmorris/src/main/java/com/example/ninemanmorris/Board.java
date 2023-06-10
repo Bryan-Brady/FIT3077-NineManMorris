@@ -2,7 +2,6 @@ package com.example.ninemanmorris;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.effect.Glow;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
@@ -14,6 +13,7 @@ import java.util.Collections;
 public class Board {
 
     //Objects within this is instantiated immediately upon running HelloApplication.java
+    private Utils utils = new Utils();
     private Chip currentChip = null;
     private Player1 player1 = Player1.getInstance();
     private Player2 player2 = Player2.getInstance();
@@ -25,6 +25,7 @@ public class Board {
     private Text tutorialText;
     private Tutorial tutorial = new Tutorial();
 
+    private boolean tutorialOn = false;
 
     //Player 1 //
     @FXML
@@ -161,8 +162,7 @@ public class Board {
 //    private Chip[] chipsP1Array = {p101, p102, p103, p104, p105, p106, p107, p108, p109};
 //    private Chip[] chipsP2Array = {p201, p202, p203, p204, p205, p206, p207, p208, p209};
 
-    private ArrayList<Chip> chip1ArrayList;
-    private ArrayList<Chip> chip2ArrayList;
+
 
     private ArrayList<Node> nodeArrayList;
 
@@ -229,30 +229,31 @@ public class Board {
         }
 
         //Initialise arraylist of chips
-        chip1ArrayList = new ArrayList<Chip>();
+        ArrayList<Chip> chip1ArrayList = new ArrayList<Chip>();
         //Use Collections class to add multiple elements into the list/arraylist
         Collections.addAll(chip1ArrayList, p101, p102, p103, p104, p105, p106, p107, p108, p109);
+        player1.setChips(chip1ArrayList);
 
-        chip2ArrayList = new ArrayList<Chip>();
+        ArrayList<Chip> chip2ArrayList = new ArrayList<Chip>();
         Collections.addAll(chip2ArrayList, p201, p202, p203, p204, p205, p206, p207, p208, p209);
-
+        player2.setChips(chip2ArrayList);
 
         //Originally set the text to player 1 as player 1 moves first
         setPlayerTurnText("Player 1");
 
         nodeArrayList = new ArrayList<Node>();
         Collections.addAll(nodeArrayList, node1, node2, node3, node4, node5, node6, node7, node8, node9, node10, node11, node12, node13, node14, node15, node16, node17, node18, node19, node20, node21, node22, node23, node24);
-
+        tutorial.setNodeArrayList(nodeArrayList);
         // Injecting depedencies
+        tutorial.injectText(playerActionText);
         move.injectTutorial(tutorial);
-        tutorial.injectText(tutorialText);
 
     }
     @FXML
     void onLayoutClick(MouseEvent event) {
         // check for winner again in case game has ended and someone tries to click on the screen
 
-        checkWinner(player1, player2, chip1ArrayList, chip2ArrayList);
+        checkWinner(player1, player2, player1.getChips(), player2.getChips());
 
     }
 
@@ -267,14 +268,15 @@ public class Board {
 
         Chip thisChip = ((Chip)event.getSource());
 
-        highlight(thisChip, null);
-
-
-        if(prevChip == null){
-            ;
+        utils.highlight(thisChip, null);
+        utils.unHighlight(getPrevChip(), null);
+        utils.unHighlight(getPrevChip(), null);
+        // Highlighting nodes that chips can land on during hint or tutorial
+        if((tutorial.isTutorialOn() || tutorial.isHintOn()) && rules.isMoveAdjacent(this.currentPlayer)) {
+            tutorial.highlightAdjNodes(thisChip);
         }
-        unHighlight(getPrevChip(), null);
-        unHighlight(getPrevChip(), null);
+        tutorial.unhighlightNodes(getPrevChip());
+
         this.prevChip = thisChip;
 
         // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
@@ -282,11 +284,11 @@ public class Board {
             this.currentChip = thisChip.checkPlayerChip(thisChip, this.currentPlayer);
         }else{
             // Selecting a different chip
-            if(thisChip.checkPlayerChip(thisChip, this.currentPlayer.checkPlayerTurn(currentPlayer)) != null && thisChip.getChipStatus() == ChipStatus.ALIVE){
+            if(thisChip.checkPlayerChip(thisChip, this.currentPlayer.switchPlayerTurn(currentPlayer)) != null && thisChip.getChipStatus() == ChipStatus.ALIVE){
                 this.currentChip = thisChip;
                 move.moveKillChip(this.currentChip, this.currentPlayer);
                 if(this.currentPlayer.isPlayerMoved()) {
-                    this.currentPlayer = this.currentPlayer.checkPlayerTurn(currentPlayer);
+                    this.currentPlayer = this.currentPlayer.switchPlayerTurn(currentPlayer);
                 }
 
                 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
@@ -298,33 +300,29 @@ public class Board {
                     setPlayerTurnText("Player 1");
                     //Small addition: if chip is not part of mill, then kill is successful and thus its
                     //next player's turn
-                    if(!rules.chipIsPartOfMill(this.currentChip)){
-                        setPlayerActionText("Move");
-                    }
+//                    if(!rules.chipIsPartOfMill(this.currentChip) && tutorial.isTutorialOn()){
+//                        tutorial.setPlayerActionText("Move");
+//                    }
                 } else {
                     setPlayerTurnText("Player 2");
-                    if(!rules.chipIsPartOfMill(this.currentChip)){
-                        setPlayerActionText("Move");
-                    }
+//                    if(!rules.chipIsPartOfMill(this.currentChip) && tutorial.isTutorialOn()){
+//                        tutorial.setPlayerActionText("Move");
+//                    }
                 }
-                // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 
             }else{
                 this.currentChip = null;
             }
         }
 
-        checkWinner(player1, player2, chip1ArrayList, chip2ArrayList);
-
+        checkWinner(player1, player2, player1.getChips(), player2.getChips());
     }
 
 
 
     /** Function that is executed if any node is clicked on the board. Very important
-
      Input : event : The event of a mouse, click event.
      Return  : N/A
-
      */
     @FXML
     void onNodeClick(MouseEvent event) {
@@ -334,7 +332,9 @@ public class Board {
 
         if (this.currentChip != null) {
             // Where move check is happening
-            move.moveAnyWhere(this.currentChip, thisNode, this.currentPlayer);
+            if(this.currentChip.getChipStatus() == ChipStatus.RESERVE || currentChip.getChipStatus() == ChipStatus.ALIVE) {
+                move.moveAnyWhere(this.currentChip, thisNode, this.currentPlayer);
+            }
             move.moveAdjacent(this.currentChip, thisNode, this.currentPlayer);
             rules.setMillStatusBoard(lineArray);
             // Check if player have three in a row
@@ -342,34 +342,22 @@ public class Board {
                 // Go in this if player don't have three in a row
                 // Changing player turn
                 if(this.currentPlayer.isPlayerMoved()) {
-                    this.currentPlayer = this.currentPlayer.checkPlayerTurn(currentPlayer);
 
-                    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
-                    // Set Text portion [Case 1]
-                    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
-                    // Since this is the scenario where player has NO MILL, we can now set the text accordingly.
+                    this.currentPlayer = this.currentPlayer.switchPlayerTurn(currentPlayer);
+                    System.out.println("Current player is : " + currentPlayer.getPlayerType());
                     if(this.currentPlayer.getPlayerType() == PlayerType.PLAYER1){
                         setPlayerTurnText("Player 1");
                     } else {
                         setPlayerTurnText("Player 2");
                     }
-                    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
-
-                    //No mill so, valid action is move a piece
-                    setPlayerActionText("Move");
                 }
-            } else {
-                //MILL has been made. Set action text letting them know mill has been made so take a piece
-                setPlayerActionText("Mill made, take a piece");
             }
+
             this.currentChip = null;
         }
         // Winner is checked again for the case where player has no more moves immediately after placing down their LAST chip
         // (because reserve is reduced after it has moved, not when its clicked)
-        checkWinner(player1, player2, chip1ArrayList, chip2ArrayList);
-    }
-    @FXML
-    void onLineClick(MouseEvent event){
+        checkWinner(player1, player2, player1.getChips(), player2.getChips());
 
     }
 
@@ -382,46 +370,33 @@ public class Board {
             alert.showAndWait();
         }
     }
-
-    public void tutorialModeOn(){
+    @FXML
+    private void tutorialModeOn(){
+//        this.tutorial.setTutorialOn(true);
+//        this.tutorial.setTutorialText("PLACE YOUR DAMN CHIPS HERE");
+//        System.out.println("TUTORIAL ON");
         this.tutorial.setTutorialOn(true);
-        this.tutorial.setTutorialText("PLACE YOUR DAMN CHIPS HERE");
-        System.out.println("TUTORIAL ON");
+        this.tutorial.displayMessage(currentPlayer); // Player 1
 
         // Make exit button here as well
     }
-    public void hintOn(){
+    @FXML
+    private void hintOn(){
         if(!tutorial.isTutorialOn()) {
             // Can only turn hints on if tutorial is off
+            this.tutorial.setTutorialOn(true);
             this.tutorial.setHintOn(true);
         }
-        System.out.println("HINT ON");
+        this.tutorial.displayMessage(currentPlayer);
+        this.tutorial.setTutorialOn(false);
+    }
+    @FXML
+    private void tutorialModeOff(){
+        this.tutorial.setTutorialOn(false);
+        this.tutorial.setPlayerActionText(" ");
     }
 
 
-    private void highlight(Chip thisChip, Node thisNode ){
-        if(thisChip != null) {
-            thisChip.setStrokeWidth(4);
-            thisChip.setStroke(Color.GREEN);
-        }
-
-        if(thisNode != null){
-            thisNode.setStrokeWidth(4);
-            thisChip.setStroke(Color.GREEN);
-        }
-    }
-
-    private void unHighlight(Chip thisChip, Node thisNode ){
-        if(thisChip != null) {
-            thisChip.setStrokeWidth(0.7);
-            thisChip.setStroke(Color.BLACK);
-        }
-
-        if(thisNode != null){
-            thisNode.setStrokeWidth(4);
-            thisChip.setStroke(Color.GREEN);
-        }
-    }
     public Player getPlayer1() {
         return player1;
     }
@@ -439,21 +414,4 @@ public class Board {
         this.playerTurnText.setText(playerTurnText);
     }
 
-    private void setPlayerActionText(String playerActionText) {
-        this.playerActionText.setText(playerActionText);
-    }
-
-    private void setPrevChip(Chip prevChip) {
-        this.prevChip = prevChip;
-    }
-
-    private void highlight(Chip thisChip){
-        thisChip.setStrokeWidth(4);
-        thisChip.setStroke(Color.GREEN);
-    }
-
-    private void unHighlight(Chip thisChip) {
-        thisChip.setStrokeWidth(0.7);
-        thisChip.setStroke(Color.BLACK);
-    }
 }
