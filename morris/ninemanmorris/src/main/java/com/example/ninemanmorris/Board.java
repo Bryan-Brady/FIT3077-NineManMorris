@@ -372,11 +372,11 @@ public class Board {
                     }
                     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 
-                    //As such, No mill therefore, move
+                    //No mill so, valid action is move a piece
                     setPlayerActionText("Move");
                 }
             } else {
-                //if NO MILL, set action text letting them know mill has been made so take a piece
+                //MILL has been made. Set action text letting them know mill has been made so take a piece
                 setPlayerActionText("Mill made, take a piece");
             }
             this.currentChip = null;
