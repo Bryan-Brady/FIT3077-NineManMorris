@@ -5,6 +5,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.effect.Glow;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -129,6 +130,11 @@ public class Board {
     private Node node23 = new Node();
     @FXML
     private Node node24 = new Node();
+    @FXML
+    private Text playerTurnText= new Text();
+    @FXML
+    private Text playerActionText = new Text();
+
     private Line line1 = new Line();
     private Line line2 = new Line();
     private Line line3 = new Line();
@@ -221,11 +227,13 @@ public class Board {
 
         chip2ArrayList = new ArrayList<Chip>();
         Collections.addAll(chip2ArrayList, p201, p202, p203, p204, p205, p206, p207, p208, p209);
+
+        //Originally set the text to player 1 as player 1 moves first
+        setPlayerTurnText("Player 1");
     }
     @FXML
     void onLayoutClick(MouseEvent event) {
         // check for winner again in case game has ended and someone tries to click on the screen
-
         checkWinner(player1, player2, chip1ArrayList, chip2ArrayList);
 
 //        if(this.currentChip == null){
@@ -251,7 +259,11 @@ public class Board {
 //        noBright.setLevel(0);
 
         Chip thisChip = ((Chip)event.getSource());
-
+        // Outputs the layout coordinates, uncomment below to see
+//        System.out.println("###########");
+//        System.out.println(thisChip.getLayoutX());
+//        System.out.println(thisChip.getLayoutY());
+//        System.out.println("###########");
         // thisChip.setEffect(glow);
 
         System.out.println("Previous chip: ");
@@ -284,6 +296,27 @@ public class Board {
                 if(this.currentPlayer.isPlayerMoved()) {
                     this.currentPlayer = this.currentPlayer.checkPlayerTurn(currentPlayer);
                 }
+
+                // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+                // Set Text portion [Case 2]
+                // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+                // Since this is the scenario where player must select a chip to kill, we must update the player text
+                // After the kill has been made as it is then the next player's turn
+                if(this.currentPlayer.getPlayerType() == PlayerType.PLAYER1 && this.currentChip.getId().startsWith("p1")){
+                    setPlayerTurnText("Player 1");
+                    //Small addition: if chip is not part of mill, then kill is successful and thus its
+                    //next player's turn
+                    if(!rules.chipIsPartOfMill(this.currentChip)){
+                        setPlayerActionText("Move");
+                    }
+                } else {
+                    setPlayerTurnText("Player 2");
+                    if(!rules.chipIsPartOfMill(this.currentChip)){
+                        setPlayerActionText("Move");
+                    }
+                }
+                // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+
             }else{
                 this.currentChip = null;
             }
@@ -327,7 +360,24 @@ public class Board {
                 // Changing player turn
                 if(this.currentPlayer.isPlayerMoved()) {
                     this.currentPlayer = this.currentPlayer.checkPlayerTurn(currentPlayer);
+
+                    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+                    // Set Text portion [Case 1]
+                    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+                    // Since this is the scenario where player has NO MILL, we can now set the text accordingly.
+                    if(this.currentPlayer.getPlayerType() == PlayerType.PLAYER1){
+                        setPlayerTurnText("Player 1");
+                    } else {
+                        setPlayerTurnText("Player 2");
+                    }
+                    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+
+                    //As such, No mill therefore, move
+                    setPlayerActionText("Move");
                 }
+            } else {
+                //if NO MILL, set action text letting them know mill has been made so take a piece
+                setPlayerActionText("Mill made, take a piece");
             }
             this.currentChip = null;
         }
@@ -361,16 +411,24 @@ public class Board {
         return prevChip;
     }
 
-    public void setPrevChip(Chip prevChip) {
+    private void setPlayerTurnText(String playerTurnText) {
+        this.playerTurnText.setText(playerTurnText);
+    }
+
+    private void setPlayerActionText(String playerActionText) {
+        this.playerActionText.setText(playerActionText);
+    }
+
+    private void setPrevChip(Chip prevChip) {
         this.prevChip = prevChip;
     }
 
-    public void highlight(Chip thisChip){
+    private void highlight(Chip thisChip){
         thisChip.setStrokeWidth(4);
         thisChip.setStroke(Color.GREEN);
     }
 
-    public void unHighlight(Chip thisChip) {
+    private void unHighlight(Chip thisChip) {
         thisChip.setStrokeWidth(0.7);
         thisChip.setStroke(Color.BLACK);
     }

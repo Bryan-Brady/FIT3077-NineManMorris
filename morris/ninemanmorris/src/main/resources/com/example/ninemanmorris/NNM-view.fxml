@@ -105,6 +105,13 @@
       <Line endX="-19.0" endY="21.0" layoutX="314.0" layoutY="231.0" startX="-19.0" startY="-5.0" />
       <Line endX="-19.0" endY="11.0" layoutX="314.0" layoutY="275.0" startX="-19.0" startY="-9.0" />
 
+      <Text layoutX="259.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Turn:" />
+      <Text fx:id="playerTurnText" layoutX="297.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player" />
+      <Text layoutX="249.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Action:" />
+      <Text fx:id="playerActionText" layoutX="297.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Move" />
+
+      <Text layoutX="30" layoutY="480" strokeType="OUTSIDE" strokeWidth="0.0" text="Dead Chips" />
+      <Text layoutX="478" layoutY="480" strokeType="OUTSIDE" strokeWidth="0.0" text="Dead Chips" />
       <StackPane layoutX="239.0" layoutY="12.0" prefHeight="48.0" prefWidth="129.0" />
    </children>
 </AnchorPane>
