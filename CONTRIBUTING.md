@@ -6,4 +6,4 @@
 | Glenn    | Making Tutorial Class, allowing user to enable/disable hints and tutorial mode                                           | 09/06/2023 9pm - 12am         
 | Glenn    | Finalizing tutorial class, fixing minor bugs regarding highlighting valid positions                                      | 10/06/2023 9pm - 4 am         
 | Bryan	   | Major bug fix of previous sprint, helped in highlighting and assisted in the logic behind the tutorial mode  	           | 10/06/2023 1pm -1am  	        |
-
+| Glenn | Finalizing tutorial class, fixing chip bugs, deleting unused code, commenting | 11/06/2023 4pm - 9pm |
