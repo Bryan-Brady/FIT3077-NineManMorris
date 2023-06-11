@@ -23,8 +23,7 @@ public class Board {
 
     private Rules rules = new Rules();
     private Move move = new Move();
-    @FXML
-    private Text tutorialText;
+
     private Tutorial tutorial = new Tutorial();
 
     private boolean tutorialOn = false;
@@ -386,7 +385,6 @@ public class Board {
     private void hintOn(){
         if(!tutorial.isTutorialOn()) {
             // Can only turn hints on if tutorial is off
-            this.tutorial.setTutorialOn(true);
             this.tutorial.setHintOn(true);
         }
         this.tutorial.displayMessage(currentPlayer);
