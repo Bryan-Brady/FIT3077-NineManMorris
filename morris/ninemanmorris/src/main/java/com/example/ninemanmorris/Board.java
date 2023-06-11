@@ -3,12 +3,14 @@ package com.example.ninemanmorris;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
+/**
+ * A controller class that controls the actions of the game
+ */
 
 public class Board {
 
@@ -84,8 +86,6 @@ public class Board {
     @FXML
     private Chip p209;
 
-    ////////////////////////////////////////////////////////
-    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
     @FXML
     private Node node1 = new Node();
     @FXML
@@ -159,11 +159,6 @@ public class Board {
     private Line line15 = new Line();
     private Line line16 = new Line();
 
-//    private Chip[] chipsP1Array = {p101, p102, p103, p104, p105, p106, p107, p108, p109};
-//    private Chip[] chipsP2Array = {p201, p202, p203, p204, p205, p206, p207, p208, p209};
-
-
-
     private ArrayList<Node> nodeArrayList;
 
     private Line[] lineArray = {line1, line2, line3, line4, line5, line6, line7, line8,
@@ -171,12 +166,9 @@ public class Board {
                                 line16};
     private Chip prevChip;
 
-    /** Function that is initialised upon opening the game; initialising the nodes and their neighbours,
+    /**
+     * Function that is initialised upon opening the game; initialising the nodes and their neighbours,
      * and the lines (I.e possible mill combinations).
-
-     Input : N/A
-     Return  : N/A
-
      */
     @FXML
     public void initialize() {
@@ -257,11 +249,9 @@ public class Board {
 
     }
 
-    /** Function that is executed if any chip is clicked on the board. Very important
-
-     Input : event : The event of a mouse, click event.
-     Return  : N/A
-
+    /**
+     * Function that is executed if any chip is clicked on the board. Very important
+     * @param event : mouseclick event
      */
     @FXML
     void onChipClick(MouseEvent event) {
@@ -273,9 +263,13 @@ public class Board {
         utils.unHighlight(getPrevChip(), null);
         // Highlighting nodes that chips can land on during hint or tutorial
         if((tutorial.isTutorialOn() || tutorial.isHintOn()) && rules.isMoveAdjacent(this.currentPlayer)) {
-            tutorial.highlightAdjNodes(thisChip);
+            tutorial.unhighlightAdjNodes(getPrevChip());
+            // Make sure to highlihgt only the chip that the player can click
+            if(thisChip.checkPlayerChip(thisChip, this.currentPlayer) != null && thisChip.getChipStatus() == ChipStatus.ALIVE){
+                tutorial.highlightAdjNodes(thisChip);
+            }
         }
-        tutorial.unhighlightNodes(getPrevChip());
+
 
         this.prevChip = thisChip;
 
@@ -319,10 +313,9 @@ public class Board {
     }
 
 
-
-    /** Function that is executed if any node is clicked on the board. Very important
-     Input : event : The event of a mouse, click event.
-     Return  : N/A
+    /**
+     * Function that is executed if any node is clicked on the board. Very important
+     * @param event : mouse click event
      */
     @FXML
     void onNodeClick(MouseEvent event) {
@@ -344,7 +337,7 @@ public class Board {
                 if(this.currentPlayer.isPlayerMoved()) {
 
                     this.currentPlayer = this.currentPlayer.switchPlayerTurn(currentPlayer);
-                    System.out.println("Current player is : " + currentPlayer.getPlayerType());
+
                     if(this.currentPlayer.getPlayerType() == PlayerType.PLAYER1){
                         setPlayerTurnText("Player 1");
                     } else {
@@ -361,25 +354,34 @@ public class Board {
 
     }
 
+    /**
+     * Function that checks who the winner of the game is
+     * @param player1
+     * @param player2
+     * @param chip1ArrayList : Collection of chips that the player have
+     * @param chip2ArrayList : Collection of chips that the player have
+     */
     public void checkWinner(Player player1, Player player2, ArrayList<Chip> chip1ArrayList, ArrayList<Chip> chip2ArrayList){
         if(rules.isGameEnd(player1, player2, chip1ArrayList, chip2ArrayList) != null){
-            System.out.println("The Winner Is : " + rules.isGameEnd(player1, player2, chip1ArrayList, chip2ArrayList).getPlayerType());
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("WINNER");
             alert.setContentText("The Winner Is : " + rules.isGameEnd(player1, player2, chip1ArrayList, chip2ArrayList).getPlayerType());
             alert.showAndWait();
         }
     }
+
+    /**
+     * A funciton that is invoked to when tutorial on is being clicked
+     */
     @FXML
     private void tutorialModeOn(){
-//        this.tutorial.setTutorialOn(true);
-//        this.tutorial.setTutorialText("PLACE YOUR DAMN CHIPS HERE");
-//        System.out.println("TUTORIAL ON");
         this.tutorial.setTutorialOn(true);
         this.tutorial.displayMessage(currentPlayer); // Player 1
-
-        // Make exit button here as well
     }
+
+    /**
+     * A function that is invoked the hint button is clicked
+     */
     @FXML
     private void hintOn(){
         if(!tutorial.isTutorialOn()) {
@@ -390,10 +392,16 @@ public class Board {
         this.tutorial.displayMessage(currentPlayer);
         this.tutorial.setTutorialOn(false);
     }
+
+    /**
+     * A function that is invoked when the tutorial off button is clicked
+     */
     @FXML
     private void tutorialModeOff(){
         this.tutorial.setTutorialOn(false);
         this.tutorial.setPlayerActionText(" ");
+        this.tutorial.unhighlightAllNodes();
+        this.tutorial.unhighlightAllChips();
     }
 
 

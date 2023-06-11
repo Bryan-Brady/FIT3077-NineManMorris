@@ -5,21 +5,17 @@ import java.util.Arrays;
 public class Move {
     private static Rules rules = new Rules();
     private static Tutorial tutorial;
+
     public Move(){
 
     }
 
 
-
-    /** Function to set the position of the currently clicked chip to the clicked node of the current player.
-
-     Input :
-     currentChip : The currently selected chip
-     thisNode: The currently clicked node
-     currentPlayer: The current player's turn
-
-     Return  : N/A
-
+    /**
+     * Function to set the position of the currently clicked chip to the clicked node of the current player.
+     * @param currentChip
+     * @param thisNode
+     * @param currentPlayer
      */
     private void setPos(Chip currentChip,Node thisNode, Player currentPlayer){
         if(this.tutorial.isChipsHighlighted()){
@@ -29,7 +25,6 @@ public class Move {
 
         if(this.tutorial.isNodesHighlighted()){
             // Unhighlight all the nodes
-            System.out.println("NODES HIGHLIGHTESd");
             tutorial.unhighlightAllNodes();
         }
 
@@ -46,14 +41,11 @@ public class Move {
 
         // Check three in a row here
         for(Line line : thisNode.getLinePart()) {
-//            System.out.println(rules.isMillMade(line));
+
             if (rules.isMillMade(line) && !currentPlayer.hasMill()) {
-//                System.out.println("IN IF STATEMENT MILL MOVE");
-//                System.out.println("IT IS THREE IN A ROW");
                 currentPlayer.setMillMade(true);
                 // Display message when mill is made
                 if(tutorial.isTutorialOn()) {
-                    System.out.println(currentPlayer.hasMill());
                     tutorial.displayMessage(currentPlayer);
 //                    tutorial.highlightKillableChips(currentPlayer);
                 }
@@ -73,15 +65,11 @@ public class Move {
         }
     }
 
-    /** Function that allows the chip to be able to move anywhere when clicked.
-
-     Input :
-     currentChip : The currently selected chip
-     thisNode: The currently clicked node
-     currentPlayer: The current player's turn
-
-     Return  : N/A
-
+    /**
+     * Function that allows the chip to be able to move anywhere when clicked.
+     * @param currentChip
+     * @param thisNode
+     * @param currentPlayer
      */
     public void moveAnyWhere(Chip currentChip,Node thisNode, Player currentPlayer){
         if(rules.isInitialMoveCondition( currentPlayer)&& currentChip.getChipStatus() == ChipStatus.RESERVE){
@@ -96,22 +84,18 @@ public class Move {
         }
 
         if(rules.isRemainingThreeMoveCondition(currentPlayer) && currentChip.getChipStatus() == ChipStatus.ALIVE){
-//            System.out.println("Three piece remain");
+
             this.setPos(currentChip, thisNode, currentPlayer);
         }
     }
 
-    /** Function that, if legal, allows the killing of an opponent chip if the current player made a mill.
-
-     Input :
-     currentChip : The currently selected chip
-     currentPlayer: The current player's turn
-
-     Return  : N/A
-
+    /**
+     * Function that, if legal, allows the killing of an opponent chip if the current player made a mill.
+     * @param targetChip
+     * @param currentPlayer
      */
     public void moveKillChip(Chip targetChip, Player currentPlayer){
-//        System.out.println(rules.chipIsPartOfMill(targetChip));
+
         if(!rules.chipIsPartOfMill(targetChip)) {
             if(targetChip.getChipLocation() != null){
                 // Remove connection from current chip location to the chip that just moved
@@ -135,13 +119,7 @@ public class Move {
 
             // Setting back to not three in a row for player
             currentPlayer.setMillMade(false);
-            System.out.println(currentPlayer.hasMill());
-            Player nextPlayer = currentPlayer.checkPlayerTurn(currentPlayer);
-            if(tutorial.isTutorialOn()) tutorial.displayMessage(nextPlayer);
-            if(this.tutorial.isHintOn()){
-                this.tutorial.setPlayerActionText(" ");
-                this.tutorial.setHintOn(false);
-            }
+
             if(this.tutorial.isChipsHighlighted()){
                 // Unhighlight all the chips
                 tutorial.unhighlightAllChips();
@@ -149,16 +127,23 @@ public class Move {
 
             if(this.tutorial.isNodesHighlighted()){
                 // Unhighlight all the nodes
-                System.out.println("NODES HIGHLIGHTESd");
                 tutorial.unhighlightAllNodes();
             }
+            Player nextPlayer = currentPlayer.checkPlayerTurn(currentPlayer);
+            if(tutorial.isTutorialOn()) tutorial.displayMessage(nextPlayer);
+
+            if(this.tutorial.isHintOn()){
+                this.tutorial.setPlayerActionText(" ");
+                this.tutorial.setHintOn(false);
+            }
+
         }
     }
 
     public void moveAdjacent(Chip currentChip, Node thisNode, Player currentPlayer){
 
         if(rules.isMoveAdjacent(currentPlayer)&& currentChip.getChipStatus() == ChipStatus.ALIVE && Arrays.asList(thisNode.getNodeNeighbours()).contains(currentChip.getChipLocation())){
-//            System.out.println("Adjacent Movement");
+
             this.setPos(currentChip, thisNode, currentPlayer);
         }
     }

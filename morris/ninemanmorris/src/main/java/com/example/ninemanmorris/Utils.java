@@ -2,8 +2,16 @@ package com.example.ninemanmorris;
 
 import javafx.scene.paint.Color;
 
+/**
+ * A Class that manages highlighting and unhighlighting or other utility
+ * functions that maybe in placed in the future
+ */
 public class Utils {
-
+    /**
+     * Functionn to highlight chips
+     * @param thisChip
+     * @param thisNode
+     */
 
     public void highlight(Chip thisChip, Node thisNode ){
         if(thisChip != null) {
@@ -17,6 +25,11 @@ public class Utils {
         }
     }
 
+    /**
+     * Function to unhighlight chips
+     * @param thisChip
+     * @param thisNode
+     */
     public void unHighlight(Chip thisChip, Node thisNode ){
         if(thisChip != null) {
             thisChip.setStrokeWidth(0.7);
